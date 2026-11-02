@@ -1,58 +1,224 @@
-# Salesforce DX Project
+<p align="center">
+  <img src="docs/images/stayhub-logo.png"
+       alt="StayHub - Your Stay. Your Way."
+       width="650"/>
+</p>
 
-Salesforce DX is a development approach that brings source-driven development, team collaboration, and continuous integration to the Salesforce Platform. Instead of working directly in an org through a web browser, you work with metadata as source files in a local DX project, track changes in version control, and deploy through automated processes.
+<p align="center">
+  <strong>A Salesforce-Powered Hotel Booking Platform</strong>
+  <br/>
+  Discover hotels, explore rooms, and manage bookings through one unified experience.
+</p>
 
-This project template gets you started with the tools and structure you need to build Salesforce applications using source control, scratch orgs, and the Salesforce CLI.
+<p align="center">
+  <img src="https://img.shields.io/badge/Salesforce-Platform-00A1E0?logo=salesforce&logoColor=white" />
+  <img src="https://img.shields.io/badge/Apex-Backend-1798C1" />
+  <img src="https://img.shields.io/badge/LWC-Frontend-00A1E0" />
+  <img src="https://img.shields.io/badge/Experience%20Cloud-LWR-032D60" />
+  <img src="https://img.shields.io/badge/Status-In%20Development-orange" />
+</p>
 
-## Prerequisites
+---
 
-Before you start, make sure you have:
+## 🌐 About StayHub
 
-- **Salesforce CLI** - Download from [developer.salesforce.com/tools/salesforcecli](https://developer.salesforce.com/tools/salesforcecli). See [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm) for details.
-- **VS Code with Salesforce Extension Pack** - See [Installation Instructions](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/install.html) for details. Includes the Agentforce Vibes extension.
-- **A development org** - Sign up for a free Developer Edition org [here](https://developer.salesforce.com/signup).
-- **Dev Hub enabled** (optional, required to create scratch orgs) - You can enable Dev Hub in your development org under Setup > Dev Hub.  See [Provide Developers Access to Salesforce DX Tools](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_setup_dx_tools.htm).
+**StayHub** is a Salesforce-based hotel booking platform designed to connect guests, hotel partners, and administrators through a unified reservation experience.
 
-## Project Structure
+The platform enables guests to discover hotels, search available rooms, make reservations, manage bookings, and share reviews.
 
-Your DX project follows this structure:
+Hotel partners can manage their properties, room inventory, pricing, and availability, while administrators oversee platform operations.
 
-- **`force-app/main/default/`** - Your metadata source files live in this default package directory. You can configure additional package directories in the `sfdx-project.json` file.
-- **`config/`** - Scratch org definitions and project settings
-- **`scripts/`** - Automation scripts for common tasks
-- **`sfdx-project.json`** - Project manifest that defines package directories, namespace, API version, and other project-level settings
+Our goal is to build a scalable, secure, and user-friendly hotel booking ecosystem using the Salesforce platform.
 
-See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm).
+## ✨ Key Features
 
-## Get Started
+| Feature | Description |
+|---|---|
+| 🔍 Hotel Discovery | Search hotels by city, dates, and guest count. |
+| 🎯 Smart Filters | Filter hotels by price, rating, and amenities. |
+| 🏨 Hotel Details | Explore hotel information, room types, and reviews. |
+| 📅 Room Booking | Reserve available rooms with booking validation. |
+| ❌ Cancellation | Manage and cancel existing reservations. |
+| 💰 Dynamic Pricing | Apply seasonal rates, discounts, and taxes. |
+| 💳 Payment Processing | Integrate payment processing and transaction tracking. |
+| ⭐ Reviews & Ratings | Allow guests to submit hotel feedback. |
+| 🏢 Partner Management | Enable partners to manage properties and inventory. |
+| 📩 Lead Capture | Capture and manage potential customer enquiries. |
 
-Ready to start developing? The [Get Started with Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_get_started_dx.htm) guide walks you through your first project, from creating a scratch org to creating a simple Apex class or LWC to deploying your code to a sandbox.
+## 👥 User Roles
 
-## Common Salesforce CLI Commands
+| Role | Capabilities |
+|---|---|
+| 🧳 Guest | Discover hotels, book rooms, cancel reservations, and submit reviews. |
+| 🏢 Hotel Partner | Manage hotels, room types, rooms, rates, and availability. |
+| 🛡️ Administrator | Oversee platform operations, users, bookings, and configurations. |
 
-Here are common CLI commands that you'll use the most:
+## 🛠️ Technology Stack
 
-- `sf org login web`: Authorize an org
-- `sf org open`: Open your org in a browser
-- `sf org create scratch`: Create a scratch org
-- `sf project deploy start`: Deploy metadata to your org
-- `sf project retrieve start`: Retrieve metadata from your org
-- `sf template generate <artifact>`: Scaffold new components, such as Apex classes and triggers, LWC components, Lightning apps, and more
-- `sf apex <command>`: Run Apex tests, run anonymous Apex blocks, and view logs
-- `sf data <command>`: Work with test data
-- `sf alias <command>`: Manage org aliases
-- `sf config <command>`: Configure CLI settings
+| Technology | Purpose |
+|---|---|
+| Salesforce Platform | Application foundation |
+| Apex | Backend business logic |
+| Lightning Web Components | User interface |
+| Experience Cloud (LWR) | Customer-facing application |
+| Custom Metadata Types | Rate plans and booking rules |
+| Salesforce DevOps Center | Deployment management |
+| Git & GitHub | Version control |
+| GitHub Actions | Automated validation and CI/CD |
 
-## Use Agentforce Vibes to Build Lightning Apps
+## 🏗️ Application Architecture
 
-Transform your ideas into custom Lightning apps that extend CRM workflows directly in Lightning Experience. Through natural conversations with Agentforce Vibes, implement custom objects and fields, complex business logic, and dynamic UI components. See [Build a Lightning App Using Agentforce Vibes](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/lexapp-overview.html).
+```mermaid
+flowchart TB
+    G[Guest]
+    H[Hotel Partner]
+    A[Administrator]
 
-## Additional Resources
+    subgraph Experience["Experience Cloud - LWR"]
+        UI[Lightning Web Components]
+    end
 
-- [Agentforce Vibes Developer Guide](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/einstein-overview.html)
-- [Salesforce CLI Installation Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
-- [Salesforce CLI Plugin Development Guide](https://developer.salesforce.com/docs/platform/salesforce-cli-plugin/guide/conceptual-overview.html)
-- [Salesforce VS Code Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
+    subgraph Backend["Salesforce Backend"]
+        C[Apex Controllers]
+        S[Apex Services]
+        T[Trigger Handlers]
+        M[Custom Metadata Types]
+    end
 
+    subgraph Data["Salesforce Data Layer"]
+        D[(Custom Objects)]
+        E[(Platform Events)]
+    end
+
+    G --> UI
+    H --> UI
+    A --> UI
+    UI --> C
+    C --> S
+    S --> T
+    S --> M
+    S --> D
+    S --> E
+```
+
+## 🗄️ Salesforce Data Model
+
+The initial data model consists of six primary custom objects:
+
+| Object | Purpose |
+|---|---|
+| `Hotel__c` | Stores hotel information and details. |
+| `Room_Type__c` | Defines room categories and capacities. |
+| `Room__c` | Maintains individual room information. |
+| `Booking__c` | Manages guest reservations. |
+| `Payment__c` | Tracks payment transactions. |
+| `Review__c` | Stores guest reviews and ratings. |
+
+**Custom Metadata Types**
+
+- `Rate_Plan__mdt` – Seasonal pricing, discounts, and tax configurations.
+- `Booking_Rule__mdt` – Booking restrictions and cancellation policies.
+
+## 📁 Project Structure
+
+```text
+StayHub/
+│
+├── config/
+├── force-app/
+│   └── main/
+│       └── default/
+│           ├── classes/
+│           ├── lwc/
+│           ├── objects/
+│           ├── triggers/
+│           └── applications/
+│
+├── manifest/
+├── scripts/
+│
+├── docs/
+│   ├── adr/
+│   ├── wireframes/
+│   ├── success-criteria.md
+│   ├── user-stories.md
+│   └── design.md
+│
+├── .github/
+│   └── workflows/
+│
+├── .forceignore
+├── sfdx-project.json
+└── README.md
+```
+
+## 🚀 Development Roadmap
+
+| Timeline | Milestone | Focus |
+|---|---|---|
+| Week 1 | 📝 Planning | Requirements, architecture, wireframes, and DevOps setup |
+| Week 2 | 🗄️ Foundation | Salesforce objects, relationships, metadata, and security |
+| Week 3 | ⚙️ Backend | Apex services, booking logic, pricing, and integrations |
+| Week 4 | 🎨 Frontend | Experience Cloud, LWC components, and checkout |
+| Week 5 | 🚢 Delivery | UAT, regression testing, deployment, and handover |
+
+## 🧪 Quality Standards
+
+| Metric | Target |
+|---|---|
+| Apex Test Coverage | ≥ 90% |
+| Critical Code Analyzer Findings | 0 |
+| Hotel Search Response Time | < 2 seconds on 50,000 records |
+| Booking Conflict Validation | Required |
+| Apex Bulkification | Required |
+| Security and Access Control | Required |
+| Deployment Validation | Required |
+
+## 🔄 Development & Deployment
+
+StayHub follows a structured development and deployment process.
+
+```text
+Development
+     ↓
+GitHub Pull Request
+     ↓
+Code Review & Automated Validation
+     ↓
+Staging
+     ↓
+UAT
+     ↓
+Production
+```
+
+Salesforce DevOps Center and GitHub Actions will be used to manage deployments, automate validation, and maintain code quality.
+
+## 📚 Documentation
+
+Project documentation is maintained under the `docs/` directory.
+
+- Success Criteria
+- User Stories and Acceptance Criteria
+- Database Design and ERD
+- Security and Sharing Model
+- Architecture Decision Records
+- UI Wireframes
+- Deployment Guide
+
+## 📌 Project Status
+
+<p>
+  <img src="https://img.shields.io/badge/Project-Active-brightgreen" />
+  <img src="https://img.shields.io/badge/Phase-Week%201%20Planning-blue" />
+</p>
+
+StayHub is currently in its initial requirements and architecture phase.
+
+---
+
+<p align="center">
+  <strong>StayHub – Your Stay. Your Way.</strong>
+  <br/>
+  Built on Salesforce. Designed for seamless stays.
+</p>
