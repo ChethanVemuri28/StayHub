@@ -1,14 +1,15 @@
-# 🏨 StayHub — Project Success Criteria
+<p align="center">
+  <img src="images/stayhub-logo.png"
+       alt="StayHub - Your Stay. Your Way."
+       width="650"/>
+</p>
 
 <div align="center">
 
-**Your Stay. Your Way.**
+<h1>Project Success Criteria</h1>
 
-[![Project](https://img.shields.io/badge/Project-StayHub-17365D?style=for-the-badge)]()
-[![Status](https://img.shields.io/badge/Status-Draft-orange?style=for-the-badge)]()
-[![Platform](https://img.shields.io/badge/Platform-Salesforce-00A1E0?style=for-the-badge&logo=salesforce&logoColor=white)]()
+<h2>Defining what success looks like, how it is measured, and how it is reviewed.</h2>
 
-*Defining what success looks like, how it is measured, and how it is reviewed.*
 
 </div>
 
