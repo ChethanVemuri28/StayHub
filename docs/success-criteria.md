@@ -327,6 +327,4 @@ This document establishes the initial project success criteria and evaluation fr
 
 *Clear requirements. Measurable outcomes. Quality delivery.*
 
-[⬆ Back to Top](#-stayhub--project-success-criteria)
-
 </div>

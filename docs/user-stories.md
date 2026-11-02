@@ -376,6 +376,4 @@ Each user story will be represented by a corresponding DevOps Center work item.
 
 *Building better hotel experiences, one user story at a time.*
 
-[⬆ Back to Top](#-stayhub--user-stories--acceptance-criteria)
-
 </div>
