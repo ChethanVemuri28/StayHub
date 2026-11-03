@@ -40,12 +40,14 @@ StayHub will support four categories of users.
 Unauthenticated users who visit the StayHub website.
 
 **Permitted access:**
+
 - Browse active hotels.
 - View room types, amenities and publicly available prices.
 - Check room availability.
 - View approved hotel information.
 
 **Restrictions:**
+
 - Cannot view guest information.
 - Cannot access booking records.
 - Cannot access payment records.
@@ -56,6 +58,7 @@ Unauthenticated users who visit the StayHub website.
 Authenticated customers who register with StayHub.
 
 **Permitted access:**
+
 - View their own profile.
 - Create bookings.
 - View their own bookings.
@@ -64,6 +67,7 @@ Authenticated customers who register with StayHub.
 - Submit reviews for completed stays.
 
 **Restrictions:**
+
 - Cannot access another guest's bookings.
 - Cannot access hotel operational records.
 - Cannot modify payment transaction records.
@@ -74,6 +78,7 @@ Authenticated customers who register with StayHub.
 External users who access StayHub through the Experience Cloud hotel-partner portal.
 
 **Permitted access:**
+
 - View their hotel's bookings.
 - Create bookings on behalf of guests.
 - Manage check-in and check-out operations.
@@ -83,6 +88,7 @@ External users who access StayHub through the Experience Cloud hotel-partner por
 - View payment status for their hotel's bookings.
 
 **Restrictions:**
+
 - Cannot access another hotel's records.
 - Cannot access platform-wide administration.
 - Cannot access unrelated guest records.
@@ -97,6 +103,7 @@ A separate hotel manager role is outside the initial implementation scope.
 Internal Salesforce users responsible for platform administration.
 
 **Permitted access:**
+
 - Access records across all hotels.
 - Manage hotel partner information.
 - Manage hotel and room configurations.
@@ -145,17 +152,17 @@ flowchart TD
 
 The initial design will use restrictive defaults for sensitive records.
 
-| Object | Proposed OWD | Reason |
-|---|---|---|
-| Account | Private | Restrict partner account access |
-| Contact | Private | Protect guest and user information |
-| Hotel__c | Private | Restrict hotel operational information |
-| Room_Type__c | Private | Restrict operational room configuration |
-| Room__c | Private | Restrict room management |
-| Booking__c | Private | Protect guest booking information |
-| Booking_Room__c | Controlled by Parent | Inherit access from Booking |
-| Payment__c | Private | Protect financial records |
-| Review__c | Private | Restrict review management |
+| Object          | Proposed OWD         | Reason                                  |
+| --------------- | -------------------- | --------------------------------------- |
+| Account         | Private              | Restrict partner account access         |
+| Contact         | Private              | Protect guest and user information      |
+| Hotel__c        | Private              | Restrict hotel operational information  |
+| Room_Type__c    | Private              | Restrict operational room configuration |
+| Room__c         | Private              | Restrict room management                |
+| Booking__c      | Private              | Protect guest booking information       |
+| Booking_Room__c | Controlled by Parent | Inherit access from Booking             |
+| Payment__c      | Private              | Protect financial records               |
+| Review__c       | Private              | Restrict review management              |
 
 **Public catalogue access:** Public visitors will receive only the required read access to approved hotel and room catalogue records through carefully configured guest-user sharing and application controls. Private OWD will not be replaced with public read/write access.
 
@@ -165,21 +172,21 @@ The exact OWD configuration must be verified against the selected Salesforce ext
 
 ### 5.1 Internal Users
 
-| Role | Responsibility |
-|---|---|
-| System Administrator | Platform-wide administration |
-| StayHub Operations | Manage hotel and booking operations |
-| StayHub Support | Assist guests and investigate booking issues |
+| Role                 | Responsibility                               |
+| -------------------- | -------------------------------------------- |
+| System Administrator | Platform-wide administration                 |
+| StayHub Operations   | Manage hotel and booking operations          |
+| StayHub Support      | Assist guests and investigate booking issues |
 
 The internal role hierarchy will be finalized based on actual staffing requirements.
 
 ### 5.2 External Users
 
-| External User Category | Access Mechanism |
-|---|---|
-| Registered Guest | Authenticated guest access with record-level ownership/sharing |
-| Hotel Receptionist | Experience Cloud external user associated with the hotel partner Account |
-| Public Visitor | Experience Cloud guest-user access with restricted permissions |
+| External User Category | Access Mechanism                                                         |
+| ---------------------- | ------------------------------------------------------------------------ |
+| Registered Guest       | Authenticated guest access with record-level ownership/sharing           |
+| Hotel Receptionist     | Experience Cloud external user associated with the hotel partner Account |
+| Public Visitor         | Experience Cloud guest-user access with restricted permissions           |
 
 Receptionists belonging to the same hotel will be associated with the same partner Account.
 
@@ -193,17 +200,17 @@ Legend:
 - **D** — Delete
 - **—** — No direct access
 
-| Object | Public Visitor | Guest | Receptionist | Administrator |
-|---|---|---|---|---|
-| Account | — | — | R | R/C/E/D |
-| Contact | — | R/E own profile | R limited | R/C/E/D |
-| Hotel__c | R approved | R | R own hotel | R/C/E/D |
-| Room_Type__c | R approved | R | R own hotel | R/C/E/D |
-| Room__c | R availability only | R availability only | R/E own hotel | R/C/E/D |
-| Booking__c | — | R/C/E own | R/C/E own hotel | R/C/E/D |
-| Booking_Room__c | — | R own booking | R/C/E own hotel | R/C/E/D |
-| Payment__c | — | R own payment details | R limited payment status | R/C/E/D |
-| Review__c | R approved reviews | R/C own review | R own hotel reviews | R/C/E/D |
+| Object          | Public Visitor      | Guest                 | Receptionist             | Administrator |
+| --------------- | ------------------- | --------------------- | ------------------------ | ------------- |
+| Account         | —                   | —                     | R                        | R/C/E/D       |
+| Contact         | —                   | R/E own profile       | R limited                | R/C/E/D       |
+| Hotel__c        | R approved          | R                     | R own hotel              | R/C/E/D       |
+| Room_Type__c    | R approved          | R                     | R own hotel              | R/C/E/D       |
+| Room__c         | R availability only | R availability only   | R/E own hotel            | R/C/E/D       |
+| Booking__c      | —                   | R/C/E own             | R/C/E own hotel          | R/C/E/D       |
+| Booking_Room__c | —                   | R own booking         | R/C/E own hotel          | R/C/E/D       |
+| Payment__c      | —                   | R own payment details | R limited payment status | R/C/E/D       |
+| Review__c       | R approved reviews  | R/C own review        | R own hotel reviews      | R/C/E/D       |
 
 **Important:** This is the proposed application access matrix, not a direct Salesforce permission-set configuration. Object permissions, sharing, field-level security, Apex access and business rules must all be considered together.
 
@@ -316,13 +323,13 @@ Field-Level Security will be applied independently of record-level access.
 
 Examples:
 
-| Field Category | Guest | Receptionist | Administrator |
-|---|---|---|---|
-| Guest personal information | Own records | Operationally required fields | As authorized |
-| Booking amount | Own booking | Own hotel bookings | Full access |
-| Payment transaction reference | Restricted | Restricted | As authorized |
-| Internal operational notes | No | Limited | As authorized |
-| Hotel configuration | Read-only public fields | Own hotel fields | Full access |
+| Field Category                | Guest                   | Receptionist                  | Administrator |
+| ----------------------------- | ----------------------- | ----------------------------- | ------------- |
+| Guest personal information    | Own records             | Operationally required fields | As authorized |
+| Booking amount                | Own booking             | Own hotel bookings            | Full access   |
+| Payment transaction reference | Restricted              | Restricted                    | As authorized |
+| Internal operational notes    | No                      | Limited                       | As authorized |
+| Hotel configuration           | Read-only public fields | Own hotel fields              | Full access   |
 
 Sensitive fields will not be exposed simply because a user has access to the parent record.
 
@@ -364,20 +371,20 @@ Public guest access must be tested independently from authenticated guest access
 
 The following scenarios will be used to validate the security design.
 
-| ID | Test Scenario | Expected Result |
-|---|---|---|
-| SEC-001 | Public visitor views active hotels | Approved hotel information is visible |
-| SEC-002 | Public visitor attempts to access a booking | Access denied |
-| SEC-003 | Guest views their own booking | Access granted |
-| SEC-004 | Guest attempts to access another guest's booking | Access denied |
-| SEC-005 | Guest attempts to view another guest's payment | Access denied |
-| SEC-006 | Receptionist views their hotel's bookings | Access granted |
-| SEC-007 | Receptionist attempts to access another hotel's booking | Access denied |
-| SEC-008 | Receptionist updates their hotel's room status | Access granted |
-| SEC-009 | Receptionist attempts to update another hotel's room | Access denied |
-| SEC-010 | Receptionist accesses restricted payment fields | Access denied |
-| SEC-011 | Administrator views records across hotels | Access granted |
-| SEC-012 | Unauthorized user attempts restricted field access | Access denied |
+| ID      | Test Scenario                                           | Expected Result                       |
+| ------- | ------------------------------------------------------- | ------------------------------------- |
+| SEC-001 | Public visitor views active hotels                      | Approved hotel information is visible |
+| SEC-002 | Public visitor attempts to access a booking             | Access denied                         |
+| SEC-003 | Guest views their own booking                           | Access granted                        |
+| SEC-004 | Guest attempts to access another guest's booking        | Access denied                         |
+| SEC-005 | Guest attempts to view another guest's payment          | Access denied                         |
+| SEC-006 | Receptionist views their hotel's bookings               | Access granted                        |
+| SEC-007 | Receptionist attempts to access another hotel's booking | Access denied                         |
+| SEC-008 | Receptionist updates their hotel's room status          | Access granted                        |
+| SEC-009 | Receptionist attempts to update another hotel's room    | Access denied                         |
+| SEC-010 | Receptionist accesses restricted payment fields         | Access denied                         |
+| SEC-011 | Administrator views records across hotels               | Access granted                        |
+| SEC-012 | Unauthorized user attempts restricted field access      | Access denied                         |
 
 ## 13. Implementation Dependencies
 
@@ -406,19 +413,19 @@ The following items must be confirmed before final implementation:
 
 ## 15. Review and Approval
 
-| Item | Status |
-|---|---|
-| User categories defined | Completed |
-| Public visitor access defined | Completed |
-| Guest access defined | Completed |
+| Item                              | Status    |
+| --------------------------------- | --------- |
+| User categories defined           | Completed |
+| Public visitor access defined     | Completed |
+| Guest access defined              | Completed |
 | Hotel receptionist access defined | Completed |
-| Administrator access defined | Completed |
-| Proposed OWD documented | Draft |
-| Sharing mechanisms documented | Draft |
-| External-user license validation | Pending |
-| Data model relationship review | Pending |
-| Technical review | Pending |
-| Final approval | Pending |
+| Administrator access defined      | Completed |
+| Proposed OWD documented           | Draft     |
+| Sharing mechanisms documented     | Draft     |
+| External-user license validation  | Pending   |
+| Data model relationship review    | Pending   |
+| Technical review                  | Pending   |
+| Final approval                    | Pending   |
 
 ---
 

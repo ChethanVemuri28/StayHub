@@ -30,11 +30,11 @@
 
 Promote the work item sequentially through these stages:
 
-| Source | Destination |
-|---|---|
+| Source      | Destination |
+| ----------- | ----------- |
 | Development | Integration |
-| Integration | UAT |
-| UAT | Staging |
+| Integration | UAT         |
+| UAT         | Staging     |
 
 For each promotion:
 

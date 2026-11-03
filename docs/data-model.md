@@ -14,13 +14,13 @@
 
 ## 📌 Document Overview
 
-| Attribute | Details |
-|---|---|
-| Project | StayHub |
-| Document | Data Model Specification |
-| Version | 1.0 |
-| Status | Proposed — Pending Review |
-| Last Updated | November 3, 2026 |
+| Attribute    | Details                   |
+| ------------ | ------------------------- |
+| Project      | StayHub                   |
+| Document     | Data Model Specification  |
+| Version      | 1.0                       |
+| Status       | Proposed — Pending Review |
+| Last Updated | November 3, 2026          |
 
 ---
 
@@ -43,22 +43,22 @@ The proposed architecture supports implementation using Salesforce configuration
 
 ### Standard Salesforce Objects
 
-| Object | Purpose |
-|---|---|
+| Object  | Purpose                                 |
+| ------- | --------------------------------------- |
 | Account | Hotel partner or operating organization |
-| Contact | Guest information |
+| Contact | Guest information                       |
 
 ### Custom Salesforce Objects
 
-| Object Label | API Name | Purpose |
-|---|---|---|
-| Hotel | `Hotel__c` | Hotel details and status |
-| Room Type | `Room_Type__c` | Room categories and pricing |
-| Room | `Room__c` | Individual physical rooms |
-| Booking | `Booking__c` | Main reservation record |
+| Object Label | API Name          | Purpose                               |
+| ------------ | ----------------- | ------------------------------------- |
+| Hotel        | `Hotel__c`        | Hotel details and status              |
+| Room Type    | `Room_Type__c`    | Room categories and pricing           |
+| Room         | `Room__c`         | Individual physical rooms             |
+| Booking      | `Booking__c`      | Main reservation record               |
 | Booking Room | `Booking_Room__c` | Individual rooms within a reservation |
-| Payment | `Payment__c` | Payments and refunds |
-| Review | `Review__c` | Guest feedback and ratings |
+| Payment      | `Payment__c`      | Payments and refunds                  |
+| Review       | `Review__c`       | Guest feedback and ratings            |
 
 ## 3. Object Definitions
 
@@ -69,10 +69,10 @@ The proposed architecture supports implementation using Salesforce configuration
 
 **Purpose:** Represents a hotel partner or operating organization.
 
-| Field | Data Type | Required |
-|---|---|---|
-| Name | Standard Name | Yes |
-| Type | Picklist | No |
+| Field | Data Type     | Required |
+| ----- | ------------- | -------- |
+| Name  | Standard Name | Yes      |
+| Type  | Picklist      | No       |
 
 **Relationships:**
 
@@ -88,12 +88,12 @@ The proposed architecture supports implementation using Salesforce configuration
 
 **Purpose:** Stores guest information.
 
-| Field | Data Type | Required |
-|---|---|---|
-| FirstName | Text | No |
-| LastName | Text | Yes |
-| Email | Email | No |
-| Phone | Phone | No |
+| Field     | Data Type | Required |
+| --------- | --------- | -------- |
+| FirstName | Text      | No       |
+| LastName  | Text      | Yes      |
+| Email     | Email     | No       |
+| Phone     | Phone     | No       |
 
 **Relationships:**
 
@@ -109,25 +109,26 @@ The proposed architecture supports implementation using Salesforce configuration
 
 **Purpose:** Stores hotel information, location, partner association, and operating status.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Text (80) | Yes |
-| Hotel_Code__c | Auto Number | Yes |
-| Partner_Account__c | Lookup(Account) | Yes |
-| Description__c | Long Text Area | No |
-| Phone__c | Phone | No |
-| Email__c | Email | No |
-| Street__c | Text (255) | Yes |
-| City__c | Text (100) | Yes |
-| State__c | Text (100) | Yes |
-| Country__c | Text (100) | Yes |
-| Postal_Code__c | Text (20) | No |
-| Star_Rating__c | Number (1,0) | No |
-| Status__c | Picklist | Yes |
-| Check_In_Time__c | Time | No |
-| Check_Out_Time__c | Time | No |
+| Field API Name     | Data Type       | Required |
+| ------------------ | --------------- | -------- |
+| Name               | Text (80)       | Yes      |
+| Hotel_Code__c      | Auto Number     | Yes      |
+| Partner_Account__c | Lookup(Account) | Yes      |
+| Description__c     | Long Text Area  | No       |
+| Phone__c           | Phone           | No       |
+| Email__c           | Email           | No       |
+| Street__c          | Text (255)      | Yes      |
+| City__c            | Text (100)      | Yes      |
+| State__c           | Text (100)      | Yes      |
+| Country__c         | Text (100)      | Yes      |
+| Postal_Code__c     | Text (20)       | No       |
+| Star_Rating__c     | Number (1,0)    | No       |
+| Status__c          | Picklist        | Yes      |
+| Check_In_Time__c   | Time            | No       |
+| Check_Out_Time__c  | Time            | No       |
 
 **Status values:**
+
 - Draft
 - Active
 - Inactive
@@ -154,19 +155,20 @@ The proposed architecture supports implementation using Salesforce configuration
 
 **Purpose:** Defines different room categories offered by a hotel.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Text (80) | Yes |
-| Hotel__c | Master-Detail(Hotel__c) | Yes |
-| Description__c | Long Text Area | No |
-| Base_Price__c | Currency (16,2) | Yes |
-| Max_Occupancy__c | Number (3,0) | Yes |
-| Bed_Type__c | Picklist | No |
-| Room_Size__c | Number (8,2) | No |
-| Amenities__c | Long Text Area | No |
-| Status__c | Picklist | Yes |
+| Field API Name   | Data Type               | Required |
+| ---------------- | ----------------------- | -------- |
+| Name             | Text (80)               | Yes      |
+| Hotel__c         | Master-Detail(Hotel__c) | Yes      |
+| Description__c   | Long Text Area          | No       |
+| Base_Price__c    | Currency (16,2)         | Yes      |
+| Max_Occupancy__c | Number (3,0)            | Yes      |
+| Bed_Type__c      | Picklist                | No       |
+| Room_Size__c     | Number (8,2)            | No       |
+| Amenities__c     | Long Text Area          | No       |
+| Status__c        | Picklist                | Yes      |
 
 **Status values:**
+
 - Active
 - Inactive
 
@@ -191,16 +193,17 @@ The proposed architecture supports implementation using Salesforce configuration
 
 **Purpose:** Represents an individual physical room belonging to a room type.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Text (80) | Yes |
-| Room_Number__c | Text (20) | Yes |
-| Room_Type__c | Master-Detail(Room_Type__c) | Yes |
-| Floor__c | Number (3,0) | No |
-| Status__c | Picklist | Yes |
-| Notes__c | Long Text Area | No |
+| Field API Name | Data Type                   | Required |
+| -------------- | --------------------------- | -------- |
+| Name           | Text (80)                   | Yes      |
+| Room_Number__c | Text (20)                   | Yes      |
+| Room_Type__c   | Master-Detail(Room_Type__c) | Yes      |
+| Floor__c       | Number (3,0)                | No       |
+| Status__c      | Picklist                    | Yes      |
+| Notes__c       | Long Text Area              | No       |
 
 **Status values:**
+
 - Available
 - Maintenance
 - Inactive
@@ -228,21 +231,22 @@ The proposed architecture supports implementation using Salesforce configuration
 
 A single booking can contain multiple rooms.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Auto Number (BK-{00000}) | Yes |
-| Guest__c | Lookup(Contact) | Yes |
-| Check_In_Date__c | Date | Yes |
-| Check_Out_Date__c | Date | Yes |
-| Booking_Date__c | Date/Time | Yes |
-| Status__c | Picklist | Yes |
-| Total_Amount__c | Roll-Up Summary (SUM) | Yes |
-| Special_Requests__c | Long Text Area | No |
-| Number_of_Adults__c | Number (3,0) | Yes |
-| Number_of_Children__c | Number (3,0) | No |
-| Booking_Source__c | Picklist | No |
+| Field API Name        | Data Type                | Required |
+| --------------------- | ------------------------ | -------- |
+| Name                  | Auto Number (BK-{00000}) | Yes      |
+| Guest__c              | Lookup(Contact)          | Yes      |
+| Check_In_Date__c      | Date                     | Yes      |
+| Check_Out_Date__c     | Date                     | Yes      |
+| Booking_Date__c       | Date/Time                | Yes      |
+| Status__c             | Picklist                 | Yes      |
+| Total_Amount__c       | Roll-Up Summary (SUM)    | Yes      |
+| Special_Requests__c   | Long Text Area           | No       |
+| Number_of_Adults__c   | Number (3,0)             | Yes      |
+| Number_of_Children__c | Number (3,0)             | No       |
+| Booking_Source__c     | Picklist                 | No       |
 
 **Status values:**
+
 - Draft
 - Pending
 - Confirmed
@@ -251,6 +255,7 @@ A single booking can contain multiple rooms.
 - Cancelled
 
 **Booking source values:**
+
 - Website
 - Mobile App
 - Admin
@@ -281,16 +286,16 @@ A single booking can contain multiple rooms.
 
 This object enables multiple rooms to be reserved under a single booking.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Auto Number (BR-{00000}) | Yes |
-| Booking__c | Master-Detail(Booking__c) | Yes |
-| Room__c | Lookup(Room__c) | Yes |
-| Adults__c | Number (3,0) | Yes |
-| Children__c | Number (3,0) | No |
-| Nightly_Rate__c | Currency (16,2) | Yes |
-| Number_of_Nights__c | Formula (Number) | Yes |
-| Room_Total__c | Formula (Currency) | Yes |
+| Field API Name      | Data Type                 | Required |
+| ------------------- | ------------------------- | -------- |
+| Name                | Auto Number (BR-{00000})  | Yes      |
+| Booking__c          | Master-Detail(Booking__c) | Yes      |
+| Room__c             | Lookup(Room__c)           | Yes      |
+| Adults__c           | Number (3,0)              | Yes      |
+| Children__c         | Number (3,0)              | No       |
+| Nightly_Rate__c     | Currency (16,2)           | Yes      |
+| Number_of_Nights__c | Formula (Number)          | Yes      |
+| Room_Total__c       | Formula (Currency)        | Yes      |
 
 **Formula — Number of Nights:**
 
@@ -327,18 +332,19 @@ Nightly_Rate__c * Number_of_Nights__c
 
 **Purpose:** Tracks payment transactions and refunds associated with a booking.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Auto Number (PAY-{00000}) | Yes |
-| Booking__c | Lookup(Booking__c) | Yes |
-| Amount__c | Currency (16,2) | Yes |
-| Payment_Date__c | Date/Time | No |
-| Payment_Method__c | Picklist | Yes |
-| Payment_Status__c | Picklist | Yes |
-| Transaction_Reference__c | Text (100), External ID, Unique | No |
-| Payment_Type__c | Picklist | Yes |
+| Field API Name           | Data Type                       | Required |
+| ------------------------ | ------------------------------- | -------- |
+| Name                     | Auto Number (PAY-{00000})       | Yes      |
+| Booking__c               | Lookup(Booking__c)              | Yes      |
+| Amount__c                | Currency (16,2)                 | Yes      |
+| Payment_Date__c          | Date/Time                       | No       |
+| Payment_Method__c        | Picklist                        | Yes      |
+| Payment_Status__c        | Picklist                        | Yes      |
+| Transaction_Reference__c | Text (100), External ID, Unique | No       |
+| Payment_Type__c          | Picklist                        | Yes      |
 
 **Payment method values:**
+
 - Card
 - UPI
 - Net Banking
@@ -346,6 +352,7 @@ Nightly_Rate__c * Number_of_Nights__c
 - Wallet
 
 **Payment status values:**
+
 - Initiated
 - Successful
 - Failed
@@ -353,6 +360,7 @@ Nightly_Rate__c * Number_of_Nights__c
 - Partially Refunded
 
 **Payment type values:**
+
 - Payment
 - Refund
 
@@ -377,18 +385,19 @@ Nightly_Rate__c * Number_of_Nights__c
 
 **Purpose:** Stores guest ratings and feedback for hotels.
 
-| Field API Name | Data Type | Required |
-|---|---|---|
-| Name | Auto Number (REV-{00000}) | Yes |
-| Hotel__c | Lookup(Hotel__c) | Yes |
-| Guest__c | Lookup(Contact) | Yes |
-| Booking__c | Lookup(Booking__c) | No |
-| Rating__c | Number (1,0) | Yes |
-| Comments__c | Long Text Area | No |
-| Review_Date__c | Date/Time | Yes |
-| Status__c | Picklist | Yes |
+| Field API Name | Data Type                 | Required |
+| -------------- | ------------------------- | -------- |
+| Name           | Auto Number (REV-{00000}) | Yes      |
+| Hotel__c       | Lookup(Hotel__c)          | Yes      |
+| Guest__c       | Lookup(Contact)           | Yes      |
+| Booking__c     | Lookup(Booking__c)        | No       |
+| Rating__c      | Number (1,0)              | Yes      |
+| Comments__c    | Long Text Area            | No       |
+| Review_Date__c | Date/Time                 | Yes      |
+| Status__c      | Picklist                  | Yes      |
 
 **Status values:**
+
 - Pending Moderation
 - Published
 - Rejected
@@ -429,34 +438,34 @@ erDiagram
 
 ## 5. Relationship Definitions
 
-| Parent Object | Child Object | Relationship Type | Field |
-|---|---|---|---|
-| Account | Hotel | Lookup | Partner_Account__c |
-| Hotel | Room Type | Master-Detail | Hotel__c |
-| Room Type | Room | Master-Detail | Room_Type__c |
-| Contact | Booking | Lookup | Guest__c |
-| Booking | Booking Room | Master-Detail | Booking__c |
-| Room | Booking Room | Lookup | Room__c |
-| Booking | Payment | Lookup | Booking__c |
-| Contact | Review | Lookup | Guest__c |
-| Hotel | Review | Lookup | Hotel__c |
-| Booking | Review | Lookup | Booking__c |
+| Parent Object | Child Object | Relationship Type | Field              |
+| ------------- | ------------ | ----------------- | ------------------ |
+| Account       | Hotel        | Lookup            | Partner_Account__c |
+| Hotel         | Room Type    | Master-Detail     | Hotel__c           |
+| Room Type     | Room         | Master-Detail     | Room_Type__c       |
+| Contact       | Booking      | Lookup            | Guest__c           |
+| Booking       | Booking Room | Master-Detail     | Booking__c         |
+| Room          | Booking Room | Lookup            | Room__c            |
+| Booking       | Payment      | Lookup            | Booking__c         |
+| Contact       | Review       | Lookup            | Guest__c           |
+| Hotel         | Review       | Lookup            | Hotel__c           |
+| Booking       | Review       | Lookup            | Booking__c         |
 
 ## 6. Business Rules and Data Integrity
 
-| Rule ID | Business Rule | Expected Behavior |
-|---|---|---|
-| BR-001 | Valid booking dates | Check-out date must be later than check-in date. |
-| BR-002 | Room availability | A room cannot be assigned to overlapping active bookings. |
-| BR-003 | Room capacity | Assigned guests cannot exceed the room type's maximum occupancy. |
-| BR-004 | Booking total | Booking total must equal the sum of all associated room totals. |
-| BR-005 | Payment validation | Payment and refund amounts must be positive and associated with a booking. |
-| BR-006 | Review eligibility | Only guests with a completed booking at the hotel can submit reviews. |
-| BR-007 | Room numbering | Room number must be unique within its hotel. |
-| BR-008 | Room status | Maintenance and inactive rooms cannot be booked. |
-| BR-009 | Booking contents | A confirmed booking must contain at least one Booking Room record. |
-| BR-010 | Review duplication | A booking should not receive duplicate reviews from the same guest. |
-| BR-011 | Rating validation | Ratings must be within the defined 1–5 range. |
+| Rule ID | Business Rule       | Expected Behavior                                                          |
+| ------- | ------------------- | -------------------------------------------------------------------------- |
+| BR-001  | Valid booking dates | Check-out date must be later than check-in date.                           |
+| BR-002  | Room availability   | A room cannot be assigned to overlapping active bookings.                  |
+| BR-003  | Room capacity       | Assigned guests cannot exceed the room type's maximum occupancy.           |
+| BR-004  | Booking total       | Booking total must equal the sum of all associated room totals.            |
+| BR-005  | Payment validation  | Payment and refund amounts must be positive and associated with a booking. |
+| BR-006  | Review eligibility  | Only guests with a completed booking at the hotel can submit reviews.      |
+| BR-007  | Room numbering      | Room number must be unique within its hotel.                               |
+| BR-008  | Room status         | Maintenance and inactive rooms cannot be booked.                           |
+| BR-009  | Booking contents    | A confirmed booking must contain at least one Booking Room record.         |
+| BR-010  | Review duplication  | A booking should not receive duplicate reviews from the same guest.        |
+| BR-011  | Rating validation   | Ratings must be within the defined 1–5 range.                              |
 
 ## 7. Technical Design Considerations
 
@@ -523,15 +532,15 @@ The following areas will be addressed separately:
 
 ## 10. Review and Approval
 
-| Review Item | Status |
-|---|---|
-| Object inventory | Proposed |
-| Field definitions | Proposed |
-| Relationship design | Proposed |
+| Review Item                | Status   |
+| -------------------------- | -------- |
+| Object inventory           | Proposed |
+| Field definitions          | Proposed |
+| Relationship design        | Proposed |
 | Multi-room booking support | Included |
-| Business rules | Proposed |
-| Technical review | Pending |
-| Lead approval | Pending |
+| Business rules             | Proposed |
+| Technical review           | Pending  |
+| Lead approval              | Pending  |
 
 ---
 
