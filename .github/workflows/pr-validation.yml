@@ -113,11 +113,8 @@ jobs:
       - name: Delete temporary scratch org
         if: always()
         run: |
-          SF_PATH="$(npm bin -g 2>/dev/null)/sf"
           if command -v sf >/dev/null 2>&1; then
-            sf org delete scratch --target-org CI-Scratch --no-prompt
-          elif [ -x "$SF_PATH" ]; then
-            "$SF_PATH" org delete scratch --target-org CI-Scratch --no-prompt
+            sf org delete scratch --target-org CI-Scratch --no-prompt || true
           else
-            echo "Salesforce CLI unavailable; scratch org cleanup skipped."
+            echo "Salesforce CLI was not installed; skipping scratch org cleanup."
           fi
