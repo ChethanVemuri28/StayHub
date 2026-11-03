@@ -1,4 +1,18 @@
-# StayHub — Data Model Specification
+<p align="center">
+  <img src="images/stayhub-logo.png"
+       alt="StayHub - Your Stay. Your Way."
+       width="650"/>
+</p>
+
+<div align="center">
+
+<h1>Data Model Specification</h1>
+
+</div>
+
+---
+
+## 📌 Document Overview
 
 | Attribute | Details |
 |---|---|
