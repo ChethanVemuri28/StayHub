@@ -20,4 +20,23 @@ public with sharing class StayHubQualityGateDemo {
       ORDER BY Name
     ];
   }
+
+  /**
+   * @description Retrieves Accounts matching the supplied names using one SOQL query.
+   * @param accountNames Set of Account names to retrieve.
+   * @return Matching Account records, ordered by Name.
+   */
+  public static List<Account> getAccountsByNames(Set<String> accountNames) {
+    if (accountNames == null || accountNames.isEmpty()) {
+      return new List<Account>();
+    }
+
+    return [
+      SELECT Id, Name
+      FROM Account
+      WHERE Name IN :accountNames
+      WITH USER_MODE
+      ORDER BY Name
+    ];
+  }
 }

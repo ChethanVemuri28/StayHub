@@ -50,4 +50,41 @@ private class StayHubQualityGateDemoTest {
     }
     Test.stopTest();
   }
+
+  @IsTest
+  static void testGetAccountsByNames() {
+    List<Account> accounts = new List<Account>{
+      new Account(Name = 'StayHub Bulk Test 1'),
+      new Account(Name = 'StayHub Bulk Test 2')
+    };
+    insert accounts;
+
+    Set<String> accountNames = new Set<String>{
+      'StayHub Bulk Test 1',
+      'StayHub Bulk Test 2'
+    };
+
+    Test.startTest();
+    System.runAs(new User(Id = UserInfo.getUserId())) {
+      List<Account> results = StayHubQualityGateDemo.getAccountsByNames(
+        accountNames
+      );
+
+      System.assertEquals(2, results.size());
+    }
+    Test.stopTest();
+  }
+
+  @IsTest
+  static void testGetAccountsByNamesWithEmptyInput() {
+    Test.startTest();
+    System.runAs(new User(Id = UserInfo.getUserId())) {
+      List<Account> results = StayHubQualityGateDemo.getAccountsByNames(
+        new Set<String>()
+      );
+
+      System.assertEquals(0, results.size());
+    }
+    Test.stopTest();
+  }
 }
