@@ -20,4 +20,28 @@ public with sharing class StayHubQualityGateDemo {
       ORDER BY Name
     ];
   }
+
+  /**
+   * @description Demonstrates an intentional SOQL-in-loop violation for CI testing.
+   * @param accountNames Names of Accounts to retrieve.
+   * @return Matching Account records.
+   */
+  public static List<Account> getAccountsWithViolation(
+    List<String> accountNames
+  ) {
+    List<Account> results = new List<Account>();
+
+    for (String accountName : accountNames) {
+      results.addAll(
+        [
+          SELECT Id, Name
+          FROM Account
+          WHERE Name = :accountName
+          WITH USER_MODE
+        ]
+      );
+    }
+
+    return results;
+  }
 }
