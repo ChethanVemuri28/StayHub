@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Nights_for_Pricing__c</fullName>
-    <description>Stored number of booking nights used to calculate the room total.</description>
+    <description
+  >Stored number of booking nights used to calculate the room total.</description>
     <externalId>false</externalId>
     <label>Nights for Pricing</label>
     <precision>3</precision>
