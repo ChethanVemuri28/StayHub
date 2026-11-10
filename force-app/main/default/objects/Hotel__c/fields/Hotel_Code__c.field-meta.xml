@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hotel_Code__c</fullName>
+    <description>Unique system-generated identifier for the hotel.</description>
+    <label>Hotel Code</label>
+    <displayFormat>HTL-{00000}</displayFormat>
+    <startingNumber>1</startingNumber>
+    <type>AutoNumber</type>
+</CustomField>
