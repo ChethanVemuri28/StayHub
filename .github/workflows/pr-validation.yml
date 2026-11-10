@@ -96,17 +96,18 @@ jobs:
             --duration-days 1 \
             --wait 10
 
-      - name: Deploy Apex classes
+      - name: Deploy Salesforce metadata
         run: |
           sf project deploy start \
-            --source-dir force-app/main/default/classes \
+            --source-dir force-app/main/default \
             --target-org CI-Scratch \
             --wait 30
 
       - name: Run Apex unit tests
         run: |
           sf apex run test \
-            --tests StayHubQualityGateDemoTest \
+            --class-names BookingRoomPricingServiceTest \
+            --class-names StayHubQualityGateDemoTest \
             --target-org CI-Scratch \
             --wait 30
 
