@@ -48,3 +48,5 @@ $RECYCLE.BIN/
 **/venv/
 
 github-ci-auth.txt
+
+_backups/
