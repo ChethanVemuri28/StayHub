@@ -103,6 +103,12 @@ jobs:
             --target-org CI-Scratch \
             --wait 30
 
+      - name: Assign StayHub Admin permission set
+        run: |
+          sf org assign permset \
+            --name StayHub_Admin_Access \
+            --target-org CI-Scratch
+
       - name: Run Apex unit tests
         run: |
           sf apex run test \
