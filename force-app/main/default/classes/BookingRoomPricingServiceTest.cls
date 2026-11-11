@@ -13,6 +13,14 @@ private class BookingRoomPricingServiceTest {
     insert guest;
   }
 
+  private static User getRunningUser() {
+    return [
+      SELECT Id
+      FROM User
+      WHERE Id = :UserInfo.getUserId()
+    ];
+  }
+
   private static Booking__c createBooking() {
     Contact guest = [
       SELECT Id
@@ -73,142 +81,188 @@ private class BookingRoomPricingServiceTest {
 
   @IsTest
   static void testInitialNightCalculationAndRollup() {
-    Booking__c booking = createBooking();
-    Room__c room = createRoom('101');
+    User runningUser = getRunningUser();
 
-    Booking_Room__c bookingRoom = new Booking_Room__c(
-      Booking__c = booking.Id,
-      Room__c = room.Id,
-      Adults__c = 2,
-      Nightly_Rate__c = 1000
-    );
+    System.runAs(runningUser) {
+      Booking__c booking = createBooking();
+      Room__c room = createRoom('101');
 
-    Test.startTest();
-    insert bookingRoom;
-    Test.stopTest();
+      Booking_Room__c bookingRoom = new Booking_Room__c(
+        Booking__c = booking.Id,
+        Room__c = room.Id,
+        Adults__c = 2,
+        Nightly_Rate__c = 1000
+      );
 
-    bookingRoom = [
-      SELECT Nights_for_Pricing__c, Room_Total__c
-      FROM Booking_Room__c
-      WHERE Id = :bookingRoom.Id
-    ];
+      Test.startTest();
+      insert bookingRoom;
+      Test.stopTest();
 
-    booking = [
-      SELECT Total_Amount__c
-      FROM Booking__c
-      WHERE Id = :booking.Id
-    ];
+      bookingRoom = [
+        SELECT Nights_for_Pricing__c, Room_Total__c
+        FROM Booking_Room__c
+        WHERE Id = :bookingRoom.Id
+      ];
 
-    System.assertEquals(
-      Decimal.valueOf('3'),
-      bookingRoom.Nights_for_Pricing__c
-    );
-    System.assertEquals(Decimal.valueOf('3000'), bookingRoom.Room_Total__c);
-    System.assertEquals(Decimal.valueOf('3000'), booking.Total_Amount__c);
+      booking = [
+        SELECT Total_Amount__c
+        FROM Booking__c
+        WHERE Id = :booking.Id
+      ];
+
+      System.assertEquals(
+        Decimal.valueOf('3'),
+        bookingRoom.Nights_for_Pricing__c,
+        'The nights for pricing should be calculated correctly.'
+      );
+      System.assertEquals(
+        Decimal.valueOf('3000'),
+        bookingRoom.Room_Total__c,
+        'The room total should be calculated correctly.'
+      );
+      System.assertEquals(
+        Decimal.valueOf('3000'),
+        booking.Total_Amount__c,
+        'The total amount on the booking should reflect the room total.'
+      );
+    }
   }
 
   @IsTest
   static void testBookingDateChangeRecalculatesRooms() {
-    Booking__c booking = createBooking();
-    Room__c room = createRoom('201');
+    User runningUser = getRunningUser();
 
-    Booking_Room__c bookingRoom = new Booking_Room__c(
-      Booking__c = booking.Id,
-      Room__c = room.Id,
-      Adults__c = 2,
-      Nightly_Rate__c = 1000
-    );
-    insert bookingRoom;
+    System.runAs(runningUser) {
+      Booking__c booking = createBooking();
+      Room__c room = createRoom('201');
 
-    booking.Check_Out_Date__c = Date.newInstance(2026, 11, 15);
+      Booking_Room__c bookingRoom = new Booking_Room__c(
+        Booking__c = booking.Id,
+        Room__c = room.Id,
+        Adults__c = 2,
+        Nightly_Rate__c = 1000
+      );
+      insert bookingRoom;
 
-    Test.startTest();
-    update booking;
-    Test.stopTest();
+      booking.Check_Out_Date__c = Date.newInstance(2026, 11, 15);
 
-    bookingRoom = [
-      SELECT Nights_for_Pricing__c, Room_Total__c
-      FROM Booking_Room__c
-      WHERE Id = :bookingRoom.Id
-    ];
+      Test.startTest();
+      update booking;
+      Test.stopTest();
 
-    booking = [
-      SELECT Total_Amount__c
-      FROM Booking__c
-      WHERE Id = :booking.Id
-    ];
+      bookingRoom = [
+        SELECT Nights_for_Pricing__c, Room_Total__c
+        FROM Booking_Room__c
+        WHERE Id = :bookingRoom.Id
+      ];
 
-    System.assertEquals(
-      Decimal.valueOf('5'),
-      bookingRoom.Nights_for_Pricing__c
-    );
-    System.assertEquals(Decimal.valueOf('5000'), bookingRoom.Room_Total__c);
-    System.assertEquals(Decimal.valueOf('5000'), booking.Total_Amount__c);
+      booking = [
+        SELECT Total_Amount__c
+        FROM Booking__c
+        WHERE Id = :booking.Id
+      ];
+
+      System.assertEquals(
+        Decimal.valueOf('5'),
+        bookingRoom.Nights_for_Pricing__c,
+        'The nights for pricing should be recalculated correctly.'
+      );
+      System.assertEquals(
+        Decimal.valueOf('5000'),
+        bookingRoom.Room_Total__c,
+        'The room total should be recalculated correctly.'
+      );
+      System.assertEquals(
+        Decimal.valueOf('5000'),
+        booking.Total_Amount__c,
+        'The total amount on the booking should reflect the updated room total.'
+      );
+    }
   }
 
   @IsTest
   static void testBulkRoomCalculationAndRollup() {
-    Booking__c booking = createBooking();
+    User runningUser = getRunningUser();
 
-    Room__c room1 = createRoom('301');
-    Room__c room2 = createRoom('302');
+    System.runAs(runningUser) {
+      Booking__c booking = createBooking();
+      Room__c room1 = createRoom('301');
+      Room__c room2 = createRoom('302');
 
-    List<Booking_Room__c> bookingRooms = new List<Booking_Room__c>{
-      new Booking_Room__c(
-        Booking__c = booking.Id,
-        Room__c = room1.Id,
-        Adults__c = 1,
-        Nightly_Rate__c = 1000
-      ),
-      new Booking_Room__c(
-        Booking__c = booking.Id,
-        Room__c = room2.Id,
-        Adults__c = 1,
-        Nightly_Rate__c = 1500
-      )
-    };
+      List<Booking_Room__c> bookingRooms = new List<Booking_Room__c>{
+        new Booking_Room__c(
+          Booking__c = booking.Id,
+          Room__c = room1.Id,
+          Adults__c = 2,
+          Nightly_Rate__c = 1000
+        ),
+        new Booking_Room__c(
+          Booking__c = booking.Id,
+          Room__c = room2.Id,
+          Adults__c = 2,
+          Nightly_Rate__c = 1200
+        )
+      };
 
-    Test.startTest();
-    insert bookingRooms;
-    Test.stopTest();
+      Test.startTest();
+      insert bookingRooms;
+      Test.stopTest();
 
-    booking = [
-      SELECT Total_Amount__c
-      FROM Booking__c
-      WHERE Id = :booking.Id
-    ];
+      bookingRooms = [
+        SELECT Nights_for_Pricing__c, Room_Total__c
+        FROM Booking_Room__c
+        WHERE Booking__c = :booking.Id
+      ];
 
-    System.assertEquals(
-      Decimal.valueOf('7500'),
-      booking.Total_Amount__c,
-      'The roll-up should sum both room totals.'
-    );
+      booking = [
+        SELECT Total_Amount__c
+        FROM Booking__c
+        WHERE Id = :booking.Id
+      ];
 
-    for (Booking_Room__c room : [
-      SELECT Nights_for_Pricing__c, Room_Total__c
-      FROM Booking_Room__c
-      WHERE Booking__c = :booking.Id
-    ]) {
-      System.assertEquals(Decimal.valueOf('3'), room.Nights_for_Pricing__c);
-      System.assertNotEquals(null, room.Room_Total__c);
+      System.assertEquals(
+        Decimal.valueOf('7500'),
+        booking.Total_Amount__c,
+        'The total amount on the booking should reflect the sum of both room totals.'
+      );
+
+      for (Booking_Room__c room : [
+        SELECT Nights_for_Pricing__c, Room_Total__c
+        FROM Booking_Room__c
+        WHERE Booking__c = :booking.Id
+      ]) {
+        System.assertEquals(
+          Decimal.valueOf('3'),
+          room.Nights_for_Pricing__c,
+          'Each room should have the correct number of nights calculated.'
+        );
+        System.assertNotEquals(null, room.Room_Total__c);
+      }
     }
   }
 
   @IsTest
   static void testInvalidBookingDatesRejected() {
-    Booking__c booking = createBooking();
-    booking.Check_Out_Date__c = booking.Check_In_Date__c;
+    User runningUser = getRunningUser();
 
-    Test.startTest();
-    try {
-      update booking;
-      System.assert(false, 'Expected invalid booking dates to be rejected.');
-    } catch (DmlException ex) {
-      System.assert(
-        ex.getMessage().contains('Check-out date must be later'),
-        'Unexpected error: ' + ex.getMessage()
-      );
+    System.runAs(runningUser) {
+      Booking__c booking = createBooking();
+      booking.Check_Out_Date__c = booking.Check_In_Date__c;
+
+      Test.startTest();
+      try {
+        update booking;
+        System.assert(
+          false,
+          'Expected an exception due to invalid booking dates.'
+        );
+      } catch (DmlException e) {
+        System.assert(
+          e.getMessage().contains('Check-Out Date must be after Check-In Date'),
+          'Unexpected error message: ' + e.getMessage()
+        );
+      }
+      Test.stopTest();
     }
-    Test.stopTest();
   }
 }

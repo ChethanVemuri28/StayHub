@@ -1,4 +1,14 @@
+/**
+ * @description Handles booking-room pricing calculations, including calculating
+ * the number of nights and recalculating room nights when booking dates change.
+ * This service is invoked by booking and booking-room triggers.
+ */
 public without sharing class BookingRoomPricingService {
+  /**
+   * @description Calculates the number of nights for each booking room using
+   * the associated booking's check-in and check-out dates.
+   * @param bookingRooms Booking-room records to calculate.
+   */
   public static void calculateNights(List<Booking_Room__c> bookingRooms) {
     Set<Id> bookingIds = new Set<Id>();
 
@@ -17,6 +27,7 @@ public without sharing class BookingRoomPricingService {
         SELECT Id, Check_In_Date__c, Check_Out_Date__c
         FROM Booking__c
         WHERE Id IN :bookingIds
+        WITH SYSTEM_MODE
       ]
     );
 
@@ -41,6 +52,11 @@ public without sharing class BookingRoomPricingService {
     }
   }
 
+  /**
+   * @description Recalculates the number of nights for existing booking-room
+   * records when their associated booking dates are changed.
+   * @param bookingIds IDs of bookings whose dates have changed.
+   */
   public static void recalculateNightsForBookings(Set<Id> bookingIds) {
     if (bookingIds == null || bookingIds.isEmpty()) {
       return;
@@ -51,6 +67,7 @@ public without sharing class BookingRoomPricingService {
         SELECT Id, Check_In_Date__c, Check_Out_Date__c
         FROM Booking__c
         WHERE Id IN :bookingIds
+        WITH SYSTEM_MODE
       ]
     );
 
@@ -60,6 +77,7 @@ public without sharing class BookingRoomPricingService {
       SELECT Id, Booking__c, Nights_for_Pricing__c
       FROM Booking_Room__c
       WHERE Booking__c IN :bookingIds
+      WITH SYSTEM_MODE
     ]) {
       Booking__c booking = bookingsById.get(room.Booking__c);
 
@@ -81,7 +99,7 @@ public without sharing class BookingRoomPricingService {
     }
 
     if (!roomsToUpdate.isEmpty()) {
-      update roomsToUpdate;
+      Database.update(roomsToUpdate, AccessLevel.SYSTEM_MODE);
     }
   }
 }
