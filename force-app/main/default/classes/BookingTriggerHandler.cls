@@ -6,12 +6,16 @@ public without sharing class BookingTriggerHandler {
    * @description Dispatches booking trigger operations based on trigger context.
    */
   public static void run() {
+    List<Booking__c> newBookings = (List<Booking__c>) Trigger.new;
+
     if (Trigger.isBefore) {
-      validateBookingDates(Trigger.new);
+      validateBookingDates(newBookings);
     }
 
     if (Trigger.isAfter && Trigger.isUpdate) {
-      recalculateChangedBookings(Trigger.new, Trigger.oldMap);
+      Map<Id, Booking__c> oldBookingMap = (Map<Id, Booking__c>) Trigger.oldMap;
+
+      recalculateChangedBookings(newBookings, oldBookingMap);
     }
   }
 
