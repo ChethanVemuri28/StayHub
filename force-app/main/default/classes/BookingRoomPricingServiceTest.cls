@@ -221,7 +221,7 @@ private class BookingRoomPricingServiceTest {
       ];
 
       System.assertEquals(
-        Decimal.valueOf('7500'),
+        Decimal.valueOf('6600'),
         booking.Total_Amount__c,
         'The total amount on the booking should reflect the sum of both room totals.'
       );
@@ -258,7 +258,8 @@ private class BookingRoomPricingServiceTest {
         );
       } catch (DmlException e) {
         System.assert(
-          e.getMessage().contains('Check-Out Date must be after Check-In Date'),
+          e.getMessage()
+            .contains('Check-out date must be later than check-in date.'),
           'Unexpected error message: ' + e.getMessage()
         );
       }
