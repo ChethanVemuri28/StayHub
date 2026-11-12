@@ -1,0 +1,817 @@
+﻿diff --git a/force-app/main/default/classes/BookingInquiryExpiryTest.cls b/force-app/main/default/classes/BookingInquiryExpiryTest.cls
+index 6a16db0..c909da3 100644
+--- a/force-app/main/default/classes/BookingInquiryExpiryTest.cls
++++ b/force-app/main/default/classes/BookingInquiryExpiryTest.cls
+@@ -1,173 +1,210 @@
+ @IsTest
+ private class BookingInquiryExpiryTest {
+-
+-    @TestSetup
+-    static void setupData() {
+-        Account partner = new Account(Name = 'Inquiry Test Partner');
+-        insert partner;
+-
+-        Contact guest = new Contact(
+-            FirstName = 'Inquiry',
+-            LastName = 'Test Guest',
+-            AccountId = partner.Id
+-        );
+-        insert guest;
+-    }
+-
+-    private static Booking__c createBooking(String status) {
+-        Contact guest = [
+-            SELECT Id
+-            FROM Contact
+-            WHERE LastName = 'Test Guest'
+-            LIMIT 1
+-        ];
+-
+-        Booking__c booking = new Booking__c(
+-            Guest__c = guest.Id,
+-            Booking_Date__c = System.now(),
+-            Check_In_Date__c = Date.today().addDays(2),
+-            Check_Out_Date__c = Date.today().addDays(5),
+-            Number_of_Adults__c = 2,
+-            Status__c = status
+-        );
+-
+-        insert booking;
+-        return booking;
++  @TestSetup
++  static void setupData() {
++    Profile profile = [
++      SELECT Id
++      FROM Profile
++      WHERE Id = :UserInfo.getProfileId()
++    ];
++
++    User testUser = new User(
++      Alias = 'inqtest',
++      Email = 'inquiry.test@example.com',
++      EmailEncodingKey = 'UTF-8',
++      LastName = 'Inquiry Tester',
++      LanguageLocaleKey = 'en_US',
++      LocaleSidKey = 'en_US',
++      ProfileId = profile.Id,
++      TimeZoneSidKey = 'Asia/Kolkata',
++      Username = 'stayhub.inquiry.' +
++        UserInfo.getOrganizationId() +
++        '@example.com'
++    );
++    insert testUser;
++
++    System.runAs(testUser) {
++      Account partner = new Account(Name = 'Inquiry Test Partner');
++      insert partner;
++
++      Contact guest = new Contact(
++        FirstName = 'Inquiry',
++        LastName = 'Test Guest',
++        AccountId = partner.Id
++      );
++      insert guest;
+     }
+-
+-    @IsTest
+-    static void testNewInquiryGetsSixHourExpiry() {
+-        Booking__c booking = createBooking('Inquiry');
+-
+-        booking = [
+-            SELECT CreatedDate, Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ];
+-
+-        System.assertNotEquals(
+-            null,
+-            booking.Inquiry_Expires_At__c,
+-            'A new Inquiry booking must receive an expiry timestamp.'
+-        );
+-
+-        Datetime expectedExpiry = booking.CreatedDate.addHours(6);
+-        Long differenceMs = Math.abs(
+-            booking.Inquiry_Expires_At__c.getTime() -
+-            expectedExpiry.getTime()
+-        );
+-
+-        System.assert(
+-            differenceMs <= 2000,
+-            'Inquiry expiry should be six hours after creation. Difference in milliseconds: ' +
+-            differenceMs
+-        );
++  }
++
++  private static User getTestUser() {
++    String username =
++      'stayhub.inquiry.' +
++      UserInfo.getOrganizationId() +
++      '@example.com';
++
++    return [
++      SELECT Id
++      FROM User
++      WHERE Username = :username
++      LIMIT 1
++    ];
++  }
++
++  private static Booking__c createBooking(String status) {
++    Contact guest = [
++      SELECT Id
++      FROM Contact
++      WHERE LastName = 'Test Guest'
++      LIMIT 1
++    ];
++
++    Booking__c booking = new Booking__c(
++      Guest__c = guest.Id,
++      Booking_Date__c = System.now(),
++      Check_In_Date__c = Date.today().addDays(2),
++      Check_Out_Date__c = Date.today().addDays(5),
++      Number_of_Adults__c = 2,
++      Status__c = status
++    );
++
++    insert booking;
++    return booking;
++  }
++
++  @IsTest
++  static void testNewInquiryGetsSixHourExpiry() {
++    System.runAs(getTestUser()) {
++      Booking__c booking = createBooking('Inquiry');
++
++      booking = [
++        SELECT CreatedDate, Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ];
++
++      System.assertNotEquals(
++        null,
++        booking.Inquiry_Expires_At__c,
++        'A new Inquiry booking must receive an expiry timestamp.'
++      );
++
++      Datetime expectedExpiry = booking.CreatedDate.addHours(6);
++      Long differenceMs = Math.abs(
++        booking.Inquiry_Expires_At__c.getTime() - expectedExpiry.getTime()
++      );
++
++      System.assert(
++        differenceMs <= 2000,
++        'Inquiry expiry should be six hours after creation. Difference in milliseconds: ' +
++        differenceMs
++      );
+     }
+-
+-    @IsTest
+-    static void testInquiryEditPreservesExpiry() {
+-        Booking__c booking = createBooking('Inquiry');
+-
+-        Datetime originalExpiry = [
+-            SELECT Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ].Inquiry_Expires_At__c;
+-
+-        Booking__c updateRecord = new Booking__c(
+-            Id = booking.Id,
+-            Special_Requests__c = 'Late arrival requested'
+-        );
+-        update updateRecord;
+-
+-        Datetime updatedExpiry = [
+-            SELECT Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ].Inquiry_Expires_At__c;
+-
+-        System.assertEquals(
+-            originalExpiry,
+-            updatedExpiry,
+-            'Editing an Inquiry booking must not extend its hold.'
+-        );
++  }
++
++  @IsTest
++  static void testInquiryEditPreservesExpiry() {
++    System.runAs(getTestUser()) {
++      Booking__c booking = createBooking('Inquiry');
++
++      Datetime originalExpiry = [
++        SELECT Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ]
++      .Inquiry_Expires_At__c;
++
++      update new Booking__c(
++        Id = booking.Id,
++        Special_Requests__c = 'Late arrival requested'
++      );
++
++      Datetime updatedExpiry = [
++        SELECT Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ]
++      .Inquiry_Expires_At__c;
++
++      System.assertEquals(
++        originalExpiry,
++        updatedExpiry,
++        'Editing an Inquiry booking must not extend its hold.'
++      );
+     }
+-
+-    @IsTest
+-    static void testConfirmedBookingClearsExpiry() {
+-        Booking__c booking = createBooking('Inquiry');
+-
+-        update new Booking__c(
+-            Id = booking.Id,
+-            Status__c = 'Confirmed'
+-        );
+-
+-        booking = [
+-            SELECT Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ];
+-
+-        System.assertEquals(
+-            null,
+-            booking.Inquiry_Expires_At__c,
+-            'Confirmed bookings must not retain an Inquiry expiry.'
+-        );
++  }
++
++  @IsTest
++  static void testConfirmedBookingClearsExpiry() {
++    System.runAs(getTestUser()) {
++      Booking__c booking = createBooking('Inquiry');
++
++      update new Booking__c(Id = booking.Id, Status__c = 'Confirmed');
++
++      booking = [
++        SELECT Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ];
++
++      System.assertEquals(
++        null,
++        booking.Inquiry_Expires_At__c,
++        'Confirmed bookings must not retain an Inquiry expiry.'
++      );
+     }
+-
+-    @IsTest
+-    static void testReturningToInquiryStartsNewHold() {
+-        Booking__c booking = createBooking('Inquiry');
+-
+-        update new Booking__c(
+-            Id = booking.Id,
+-            Status__c = 'Confirmed'
+-        );
+-
+-        Booking__c confirmedBooking = [
+-            SELECT Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ];
+-
+-        System.assertEquals(
+-            null,
+-            confirmedBooking.Inquiry_Expires_At__c,
+-            'Confirmation must clear the Inquiry expiry.'
+-        );
+-
+-        update new Booking__c(
+-            Id = booking.Id,
+-            Status__c = 'Inquiry'
+-        );
+-
+-        Booking__c returnedBooking = [
+-            SELECT Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ];
+-
+-        System.assertNotEquals(
+-            null,
+-            returnedBooking.Inquiry_Expires_At__c,
+-            'Returning to Inquiry must create a new expiry.'
+-        );
++  }
++
++  @IsTest
++  static void testReturningToInquiryStartsNewHold() {
++    System.runAs(getTestUser()) {
++      Booking__c booking = createBooking('Inquiry');
++
++      update new Booking__c(Id = booking.Id, Status__c = 'Confirmed');
++
++      Booking__c confirmedBooking = [
++        SELECT Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ];
++
++      System.assertEquals(
++        null,
++        confirmedBooking.Inquiry_Expires_At__c,
++        'Confirmation must clear the Inquiry expiry.'
++      );
++
++      update new Booking__c(Id = booking.Id, Status__c = 'Inquiry');
++
++      Booking__c returnedBooking = [
++        SELECT Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ];
++
++      System.assertNotEquals(
++        null,
++        returnedBooking.Inquiry_Expires_At__c,
++        'Returning to Inquiry must create a new expiry.'
++      );
+     }
+-
+-    @IsTest
+-    static void testConfirmedBookingHasNoInquiryExpiry() {
+-        Booking__c booking = createBooking('Confirmed');
+-
+-        booking = [
+-            SELECT Inquiry_Expires_At__c
+-            FROM Booking__c
+-            WHERE Id = :booking.Id
+-        ];
+-
+-        System.assertEquals(
+-            null,
+-            booking.Inquiry_Expires_At__c,
+-            'A Confirmed booking must not receive an Inquiry expiry.'
+-        );
++  }
++
++  @IsTest
++  static void testConfirmedBookingHasNoInquiryExpiry() {
++    System.runAs(getTestUser()) {
++      Booking__c booking = createBooking('Confirmed');
++
++      booking = [
++        SELECT Inquiry_Expires_At__c
++        FROM Booking__c
++        WHERE Id = :booking.Id
++      ];
++
++      System.assertEquals(
++        null,
++        booking.Inquiry_Expires_At__c,
++        'A Confirmed booking must not receive an Inquiry expiry.'
++      );
+     }
+-}
+\ No newline at end of file
++  }
++}
+diff --git a/force-app/main/default/classes/BookingRuleService.cls b/force-app/main/default/classes/BookingRuleService.cls
+index 908189b..d06c0f5 100644
+--- a/force-app/main/default/classes/BookingRuleService.cls
++++ b/force-app/main/default/classes/BookingRuleService.cls
+@@ -1,38 +1,54 @@
+ /**
+- * @description Reads global booking rules from Custom Metadata.
++ * @description Reads global booking rules from Custom Metadata
++ * and calculates temporary Inquiry expiry timestamps.
+  */
+ public inherited sharing class BookingRuleService {
++  /**
++   * @description Retrieves the configured Inquiry hold duration.
++   * @return The configured hold duration in hours.
++   * @throws BookingRuleConfigurationException When the configuration is
++   * missing or the configured duration is invalid.
++   */
++  public static Integer getInquiryHoldHours() {
++    Booking_Rule__mdt rule = Booking_Rule__mdt.getInstance('Default');
++
++    if (rule == null || rule.Inquiry_Hold_Hours__c == null) {
++      throw new BookingRuleConfigurationException(
++        'Default booking rule or Inquiry hold duration is missing.'
++      );
++    }
+ 
+-    public static Integer getInquiryHoldHours() {
+-        Booking_Rule__mdt rule =
+-            Booking_Rule__mdt.getInstance('Default');
+-
+-        if (rule == null || rule.Inquiry_Hold_Hours__c == null) {
+-            throw new BookingRuleConfigurationException(
+-                'Default booking rule or Inquiry hold duration is missing.'
+-            );
+-        }
+-
+-        Integer hours = rule.Inquiry_Hold_Hours__c.intValue();
+-
+-        if (hours <= 0) {
+-            throw new BookingRuleConfigurationException(
+-                'Inquiry hold duration must be greater than zero.'
+-            );
+-        }
++    Integer hours = rule.Inquiry_Hold_Hours__c.intValue();
+ 
+-        return hours;
++    if (hours <= 0) {
++      throw new BookingRuleConfigurationException(
++        'Inquiry hold duration must be greater than zero.'
++      );
+     }
+ 
+-    public static Datetime calculateInquiryExpiry(Datetime startTime) {
+-        if (startTime == null) {
+-            throw new BookingRuleConfigurationException(
+-                'Inquiry hold start time cannot be null.'
+-            );
+-        }
+-
+-        return startTime.addHours(getInquiryHoldHours());
++    return hours;
++  }
++
++  /**
++   * @description Calculates the expiry timestamp using the configured hold duration.
++   * @param startTime The date and time when the Inquiry hold begins.
++   * @return The calculated Inquiry expiry timestamp.
++   * @throws BookingRuleConfigurationException When startTime is null
++   * or the booking rule configuration is invalid.
++   */
++  public static Datetime calculateInquiryExpiry(Datetime startTime) {
++    if (startTime == null) {
++      throw new BookingRuleConfigurationException(
++        'Inquiry hold start time cannot be null.'
++      );
+     }
+ 
+-    public class BookingRuleConfigurationException extends Exception {}
+-}
+\ No newline at end of file
++    return startTime.addHours(getInquiryHoldHours());
++  }
++
++  /**
++   * @description Exception raised when booking-rule configuration is invalid.
++   */
++  public class BookingRuleConfigurationException extends Exception {
++  }
++}
+diff --git a/force-app/main/default/classes/BookingRuleServiceTest.cls b/force-app/main/default/classes/BookingRuleServiceTest.cls
+index a0f8fc6..40b5d7e 100644
+--- a/force-app/main/default/classes/BookingRuleServiceTest.cls
++++ b/force-app/main/default/classes/BookingRuleServiceTest.cls
+@@ -1,49 +1,77 @@
+ @IsTest
+ private class BookingRuleServiceTest {
++  private static User getTestUser() {
++    Profile profile = [
++      SELECT Id
++      FROM Profile
++      WHERE Id = :UserInfo.getProfileId()
++    ];
+ 
+-    @IsTest
+-    static void testGetInquiryHoldHours() {
+-        Test.startTest();
+-        Integer hours = BookingRuleService.getInquiryHoldHours();
+-        Test.stopTest();
++    User testUser = new User(
++      Alias = 'ruletest',
++      Email = 'rule.test@example.com',
++      EmailEncodingKey = 'UTF-8',
++      LastName = 'Rule Tester',
++      LanguageLocaleKey = 'en_US',
++      LocaleSidKey = 'en_US',
++      ProfileId = profile.Id,
++      TimeZoneSidKey = 'Asia/Kolkata',
++      Username = 'stayhub.rule.' + UserInfo.getOrganizationId() + '@example.com'
++    );
++    insert testUser;
++    return testUser;
++  }
+ 
+-        System.assertEquals(
+-            6,
+-            hours,
+-            'The configured Inquiry hold duration should be six hours.'
+-        );
++  @IsTest
++  static void testGetInquiryHoldHours() {
++    User testUser = getTestUser();
++
++    System.runAs(testUser) {
++      Test.startTest();
++      Integer hours = BookingRuleService.getInquiryHoldHours();
++      Test.stopTest();
++
++      System.assertEquals(
++        6,
++        hours,
++        'The configured Inquiry hold duration should be six hours.'
++      );
+     }
++  }
+ 
+-    @IsTest
+-    static void testCalculateInquiryExpiry() {
+-        Datetime startTime = Datetime.newInstanceGmt(
+-            2026, 11, 12, 10, 0, 0
+-        );
++  @IsTest
++  static void testCalculateInquiryExpiry() {
++    User testUser = getTestUser();
+ 
+-        Test.startTest();
+-        Datetime expiry =
+-            BookingRuleService.calculateInquiryExpiry(startTime);
+-        Test.stopTest();
++    System.runAs(testUser) {
++      Datetime startTime = Datetime.newInstanceGmt(2026, 11, 12, 10, 0, 0);
+ 
+-        System.assertEquals(
+-            startTime.addHours(6),
+-            expiry,
+-            'Inquiry expiry should be six hours after the start time.'
+-        );
++      Test.startTest();
++      Datetime expiry = BookingRuleService.calculateInquiryExpiry(startTime);
++      Test.stopTest();
++
++      System.assertEquals(
++        startTime.addHours(6),
++        expiry,
++        'Inquiry expiry should be six hours after the start time.'
++      );
+     }
++  }
+ 
+-    @IsTest
+-    static void testNullStartTimeRejected() {
+-        try {
+-            BookingRuleService.calculateInquiryExpiry(null);
+-            System.assert(false, 'Expected a configuration exception.');
+-        } catch (
+-            BookingRuleService.BookingRuleConfigurationException e
+-        ) {
+-            System.assert(
+-                e.getMessage().contains('cannot be null'),
+-                'Unexpected exception message.'
+-            );
+-        }
++  @IsTest
++  static void testNullStartTimeRejected() {
++    User testUser = getTestUser();
++
++    System.runAs(testUser) {
++      try {
++        BookingRuleService.calculateInquiryExpiry(null);
++        System.assert(false, 'Expected a configuration exception.');
++      } catch (BookingRuleService.BookingRuleConfigurationException e) {
++        System.assert(
++          e.getMessage().contains('cannot be null'),
++          'Unexpected exception message.'
++        );
++      }
+     }
++  }
+ }
+diff --git a/force-app/main/default/classes/BookingTriggerHandler.cls b/force-app/main/default/classes/BookingTriggerHandler.cls
+index 433bffa..f647b2f 100644
+--- a/force-app/main/default/classes/BookingTriggerHandler.cls
++++ b/force-app/main/default/classes/BookingTriggerHandler.cls
+@@ -2,111 +2,125 @@
+  * @description Handles booking validation, Inquiry expiry and room-pricing recalculation.
+  */
+ public without sharing class BookingTriggerHandler {
+-
+-    /**
+-     * @description Dispatches booking trigger operations based on trigger context.
+-     */
+-    public static void run() {
+-        List<Booking__c> newBookings = (List<Booking__c>) Trigger.new;
+-
+-        if (Trigger.isBefore) {
+-            validateBookingDates(newBookings);
+-            applyInquiryExpiry(newBookings);
+-        }
+-
+-        if (Trigger.isAfter && Trigger.isUpdate) {
+-            Map<Id, Booking__c> oldBookingMap =
+-                (Map<Id, Booking__c>) Trigger.oldMap;
+-
+-            recalculateChangedBookings(newBookings, oldBookingMap);
+-        }
++  /**
++   * @description Dispatches booking trigger operations based on trigger context.
++   */
++  public static void run() {
++    List<Booking__c> newBookings = (List<Booking__c>) Trigger.new;
++
++    if (Trigger.isBefore) {
++      validateBookingDates(newBookings);
++      applyInquiryExpiry(newBookings);
+     }
+ 
+-    /**
+-     * @description Validates booking check-in and check-out dates.
+-     */
+-    private static void validateBookingDates(List<Booking__c> bookings) {
+-        for (Booking__c booking : bookings) {
+-            if (
+-                booking.Check_In_Date__c != null &&
+-                booking.Check_Out_Date__c != null &&
+-                booking.Check_Out_Date__c <= booking.Check_In_Date__c
+-            ) {
+-                booking.Check_Out_Date__c.addError(
+-                    'Check-out date must be later than check-in date.'
+-                );
+-            }
+-        }
+-    }
++    if (Trigger.isAfter && Trigger.isUpdate) {
++      Map<Id, Booking__c> oldBookingMap = (Map<Id, Booking__c>) Trigger.oldMap;
+ 
+-    /**
+-     * @description Sets or clears the temporary Inquiry expiry timestamp.
+-     */
+-    private static void applyInquiryExpiry(List<Booking__c> bookings) {
+-        Map<Id, Booking__c> oldBookingMap =
+-            Trigger.isUpdate
+-                ? (Map<Id, Booking__c>) Trigger.oldMap
+-                : null;
+-
+-        Datetime holdStartTime = System.now();
+-
+-        for (Booking__c booking : bookings) {
+-            String currentStatus = String.isBlank(booking.Status__c)
+-                ? 'Inquiry'
+-                : booking.Status__c;
+-
+-            if (currentStatus == 'Inquiry') {
+-                Boolean isNewInquiry =
+-                    Trigger.isInsert ||
+-                    oldBookingMap.get(booking.Id).Status__c != 'Inquiry';
+-
+-                if (isNewInquiry || booking.Inquiry_Expires_At__c == null) {
+-                    booking.Inquiry_Expires_At__c =
+-                        BookingRuleService.calculateInquiryExpiry(
+-                            holdStartTime
+-                        );
+-                }
+-            } else {
+-                booking.Inquiry_Expires_At__c = null;
+-            }
+-        }
++      recalculateChangedBookings(newBookings, oldBookingMap);
+     }
+-
+-    /**
+-     * @description Recalculates room pricing when booking dates change.
+-     */
+-    private static void recalculateChangedBookings(
+-        List<Booking__c> newBookings,
+-        Map<Id, Booking__c> oldBookingMap
+-    ) {
+-        Set<Id> changedBookingIds = new Set<Id>();
+-
+-        for (Booking__c booking : newBookings) {
+-            Booking__c oldBooking = oldBookingMap.get(booking.Id);
+-
+-            if (hasDateChanges(booking, oldBooking) && hasValidDates(booking)) {
+-                changedBookingIds.add(booking.Id);
+-            }
+-        }
+-
+-        if (!changedBookingIds.isEmpty()) {
+-            BookingRoomPricingService.recalculateNightsForBookings(
+-                changedBookingIds
+-            );
++  }
++
++  /**
++   * @description Validates booking check-in and check-out dates.
++   * @param bookings New booking records to validate.
++   */
++  private static void validateBookingDates(List<Booking__c> bookings) {
++    for (Booking__c booking : bookings) {
++      if (
++        booking.Check_In_Date__c != null &&
++        booking.Check_Out_Date__c != null &&
++        booking.Check_Out_Date__c <= booking.Check_In_Date__c
++      ) {
++        booking.Check_Out_Date__c.addError(
++          'Check-out date must be later than check-in date.'
++        );
++      }
++    }
++  }
++
++  /**
++   * @description Sets or clears the temporary Inquiry expiry timestamp.
++   * @param bookings Booking records whose Inquiry expiry must be evaluated.
++   */
++  private static void applyInquiryExpiry(List<Booking__c> bookings) {
++    Map<Id, Booking__c> oldBookingMap = Trigger.isUpdate
++      ? (Map<Id, Booking__c>) Trigger.oldMap
++      : null;
++
++    Datetime holdStartTime = System.now();
++
++    for (Booking__c booking : bookings) {
++      String currentStatus = String.isBlank(booking.Status__c)
++        ? 'Inquiry'
++        : booking.Status__c;
++
++      Booking__c oldBooking = Trigger.isUpdate
++        ? oldBookingMap.get(booking.Id)
++        : null;
++
++      Boolean isNewInquiry =
++        Trigger.isInsert ||
++        oldBooking == null ||
++        oldBooking.Status__c != 'Inquiry';
++
++      if (currentStatus == 'Inquiry') {
++        if (isNewInquiry || booking.Inquiry_Expires_At__c == null) {
++          booking.Inquiry_Expires_At__c = BookingRuleService.calculateInquiryExpiry(
++            holdStartTime
++          );
+         }
++      } else {
++        booking.Inquiry_Expires_At__c = null;
++      }
+     }
+-
+-    private static Boolean hasDateChanges(
+-        Booking__c booking,
+-        Booking__c oldBooking
+-    ) {
+-        return booking.Check_In_Date__c != oldBooking.Check_In_Date__c ||
+-            booking.Check_Out_Date__c != oldBooking.Check_Out_Date__c;
++  }
++
++  /**
++   * @description Recalculates room pricing when booking dates change.
++   * @param newBookings Updated booking records.
++   * @param oldBookingMap Original booking records keyed by record ID.
++   */
++  private static void recalculateChangedBookings(
++    List<Booking__c> newBookings,
++    Map<Id, Booking__c> oldBookingMap
++  ) {
++    Set<Id> changedBookingIds = new Set<Id>();
++
++    for (Booking__c booking : newBookings) {
++      Booking__c oldBooking = oldBookingMap.get(booking.Id);
++
++      if (hasDateChanges(booking, oldBooking) && hasValidDates(booking)) {
++        changedBookingIds.add(booking.Id);
++      }
+     }
+ 
+-    private static Boolean hasValidDates(Booking__c booking) {
+-        return booking.Check_In_Date__c != null &&
+-            booking.Check_Out_Date__c != null &&
+-            booking.Check_Out_Date__c > booking.Check_In_Date__c;
++    if (!changedBookingIds.isEmpty()) {
++      BookingRoomPricingService.recalculateNightsForBookings(changedBookingIds);
+     }
++  }
++
++  /**
++   * @description Determines whether a booking's check-in or check-out date changed.
++   * @param booking Updated booking record.
++   * @param oldBooking Original booking record.
++   * @return True if either booking date changed.
++   */
++  private static Boolean hasDateChanges(
++    Booking__c booking,
++    Booking__c oldBooking
++  ) {
++    return booking.Check_In_Date__c != oldBooking.Check_In_Date__c ||
++      booking.Check_Out_Date__c != oldBooking.Check_Out_Date__c;
++  }
++
++  /**
++   * @description Checks whether a booking has a valid check-in and check-out date range.
++   * @param booking Booking record to validate.
++   * @return True when both dates exist and check-out is later than check-in.
++   */
++  private static Boolean hasValidDates(Booking__c booking) {
++    return booking.Check_In_Date__c != null &&
++      booking.Check_Out_Date__c != null &&
++      booking.Check_Out_Date__c > booking.Check_In_Date__c;
++  }
+ }

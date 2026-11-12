@@ -14,13 +14,13 @@
 
 ## 📌 Document Overview
 
-| Attribute    | Details                   |
-| ------------ | ------------------------- |
-| Project      | StayHub                   |
-| Document     | Data Model Specification  |
-| Version      | 1.1                       |
+| Attribute    | Details                            |
+| ------------ | ---------------------------------- |
+| Project      | StayHub                            |
+| Document     | Data Model Specification           |
+| Version      | 1.1                                |
 | Status       | Updated - Pending Technical Review |
-| Last Updated | November 12, 2026          |
+| Last Updated | November 12, 2026                  |
 
 ---
 
@@ -62,10 +62,10 @@ The proposed architecture supports implementation using Salesforce configuration
 
 ### Custom Metadata Types
 
-| Type Label   | API Name            | Purpose |
-| ------------ | ------------------- | ------- |
+| Type Label   | API Name            | Purpose                                                                                                          |
+| ------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Booking Rule | `Booking_Rule__mdt` | Configurable booking policies, including inquiry hold duration, minimum and maximum stay, and cancellation rules |
-| Rate Plan    | `Rate_Plan__mdt`    | Configurable seasonal pricing, length-of-stay discounts, tax percentage, and member discounts |
+| Rate Plan    | `Rate_Plan__mdt`    | Configurable seasonal pricing, length-of-stay discounts, tax percentage, and member discounts                    |
 
 ## 3. Object Definitions
 
@@ -431,13 +431,13 @@ Nightly_Rate__c * Number_of_Nights__c
 
 **Purpose:** Stores configurable booking policies used by StayHub.
 
-| Field API Name | Data Type | Default Record Value | Purpose |
-| -------------- | --------- | -------------------- | ------- |
-| Inquiry_Hold_Hours__c | Number (3,0) | 6 | Duration of the inquiry hold in hours |
-| Minimum_Stay_Nights__c | Number (3,0) | 1 | Minimum permitted stay |
-| Maximum_Stay_Nights__c | Number (3,0) | 30 | Maximum permitted stay |
-| Free_Cancellation_Hours__c | Number (3,0) | 24 | Cancellation window for free cancellation |
-| Cancellation_Fee_Percentage__c | Percent (5,2) | 10% | Configured cancellation fee percentage |
+| Field API Name                 | Data Type     | Default Record Value | Purpose                                   |
+| ------------------------------ | ------------- | -------------------- | ----------------------------------------- |
+| Inquiry_Hold_Hours__c          | Number (3,0)  | 6                    | Duration of the inquiry hold in hours     |
+| Minimum_Stay_Nights__c         | Number (3,0)  | 1                    | Minimum permitted stay                    |
+| Maximum_Stay_Nights__c         | Number (3,0)  | 30                   | Maximum permitted stay                    |
+| Free_Cancellation_Hours__c     | Number (3,0)  | 24                   | Cancellation window for free cancellation |
+| Cancellation_Fee_Percentage__c | Percent (5,2) | 10%                  | Configured cancellation fee percentage    |
 
 **Configured record:** `Default` - Default Booking Rules.
 
@@ -445,22 +445,22 @@ Nightly_Rate__c * Number_of_Nights__c
 
 **Purpose:** Stores seasonal pricing and discount configuration.
 
-| Field API Name | Data Type | Purpose |
-| -------------- | --------- | ------- |
-| Start_Date__c | Date | Start date of the rate plan |
-| End_Date__c | Date | End date of the rate plan |
-| Rate_Multiplier__c | Number (4,2) | Seasonal rate multiplier |
+| Field API Name             | Data Type     | Purpose                            |
+| -------------------------- | ------------- | ---------------------------------- |
+| Start_Date__c              | Date          | Start date of the rate plan        |
+| End_Date__c                | Date          | End date of the rate plan          |
+| Rate_Multiplier__c         | Number (4,2)  | Seasonal rate multiplier           |
 | Length_of_Stay_Discount__c | Percent (5,2) | Configured length-of-stay discount |
-| Tax_Percentage__c | Percent (5,2) | Configured tax percentage |
-| Member_Discount__c | Percent (5,2) | Configured member discount |
+| Tax_Percentage__c          | Percent (5,2) | Configured tax percentage          |
+| Member_Discount__c         | Percent (5,2) | Configured member discount         |
 
 **Configured 2027 records:**
 
-| Record | Start Date | End Date | Multiplier | LOS Discount | Tax | Member Discount |
-| ------ | ---------- | -------- | ---------- | ------------ | --- | --------------- |
-| Low Season | 2027-01-01 | 2027-04-30 | 0.90 | 5% | 12% | 5% |
-| Shoulder Season | 2027-05-01 | 2027-08-31 | 1.00 | 7% | 12% | 5% |
-| Peak Season | 2027-09-01 | 2027-12-31 | 1.30 | 10% | 12% | 5% |
+| Record          | Start Date | End Date   | Multiplier | LOS Discount | Tax | Member Discount |
+| --------------- | ---------- | ---------- | ---------- | ------------ | --- | --------------- |
+| Low Season      | 2027-01-01 | 2027-04-30 | 0.90       | 5%           | 12% | 5%              |
+| Shoulder Season | 2027-05-01 | 2027-08-31 | 1.00       | 7%           | 12% | 5%              |
+| Peak Season     | 2027-09-01 | 2027-12-31 | 1.30       | 10%          | 12% | 5%              |
 
 **Configuration note:** The minimum-night threshold for applying a length-of-stay discount is not currently represented by a field in this metadata type. The configured percentages are development values and require business and tax review before production use.
 
@@ -518,6 +518,7 @@ erDiagram
 | BR-014 | Cancellation policy | Free cancellation eligibility and cancellation fees must follow the configured free-cancellation window and fee percentage. |
 | BR-015 | Seasonal pricing | The applicable rate plan must be selected using its configured start and end dates, and its rate multiplier must be considered in pricing. |
 | BR-016 | Pricing adjustments and tax | Configured length-of-stay discounts, member discounts, and tax percentages must be considered when calculating booking prices. The discount eligibility threshold and calculation order require further definition. |
+
 ## 7. Technical Design Considerations
 
 ### 7.1 Multi-Room Reservations
@@ -580,6 +581,7 @@ StayHub uses Salesforce Custom Metadata Types to keep booking policies and prici
 - Define the order in which seasonal multipliers, discounts, and taxes are applied.
 - Define fallback behavior when a required configuration record is missing or invalid.
 - Review development configuration values and tax assumptions before production deployment.
+
 ## 8. Assumptions and Open Design Decisions
 
 1. Each booking represents one guest reservation for one hotel.
@@ -612,16 +614,16 @@ The following areas will be addressed separately:
 
 ## 10. Review and Approval
 
-| Review Item                | Status   |
-| -------------------------- | -------- |
+| Review Item                | Status                   |
+| -------------------------- | ------------------------ |
 | Object inventory           | Updated - Pending Review |
 | Field definitions          | Updated - Pending Review |
-| Relationship design        | Proposed |
-| Multi-room booking support | Included |
+| Relationship design        | Proposed                 |
+| Multi-room booking support | Included                 |
 | Business rules             | Updated - Pending Review |
 | Configuration design       | Updated - Pending Review |
-| Technical review           | Pending  |
-| Lead approval              | Pending  |
+| Technical review           | Pending                  |
+| Lead approval              | Pending                  |
 
 ---
 
