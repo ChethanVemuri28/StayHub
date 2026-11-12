@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomMetadata
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+    <label>Peak Season</label>
+    <protected>false</protected>
+    <values>
+        <field>Start_Date__c</field>
+        <value xsi:type="xsd:date">2027-09-01</value>
+    </values>
+    <values>
+        <field>End_Date__c</field>
+        <value xsi:type="xsd:date">2027-12-31</value>
+    </values>
+    <values>
+        <field>Rate_Multiplier__c</field>
+        <value xsi:type="xsd:double">1.30</value>
+    </values>
+    <values>
+        <field>Length_of_Stay_Discount__c</field>
+        <value xsi:type="xsd:double">10</value>
+    </values>
+    <values>
+        <field>Tax_Percentage__c</field>
+        <value xsi:type="xsd:double">12</value>
+    </values>
+    <values>
+        <field>Member_Discount__c</field>
+        <value xsi:type="xsd:double">5</value>
+    </values>
+</CustomMetadata>
