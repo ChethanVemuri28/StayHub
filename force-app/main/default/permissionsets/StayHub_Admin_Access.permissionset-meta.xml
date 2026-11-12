@@ -15,6 +15,14 @@
         <field>Booking_Room__c.Room_Total__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <hasActivationRequired>false</hasActivationRequired>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking__c.Inquiry_Expires_At__c</field>
+        <readable>true</readable>
+    </fieldPermissions>    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking__c.Special_Requests__c</field>
+        <readable>true</readable>
+    </fieldPermissions>    <hasActivationRequired>false</hasActivationRequired>
     <label>StayHub Admin Access</label>
 </PermissionSet>
