@@ -1,0 +1,127 @@
+name: StayHub PR Validation
+
+on:
+  pull_request:
+    branches:
+      - integration
+      - uat
+      - staging
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  code-analyzer:
+    name: Code Analyzer
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: zulu
+          java-version: "17"
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install Salesforce CLI
+        run: npm install --global @salesforce/cli@latest
+
+      - name: Install Code Analyzer plugin
+        run: sf plugins install code-analyzer@latest
+
+      - name: Run Salesforce Code Analyzer
+        id: analyzer
+        uses: forcedotcom/run-code-analyzer@v2
+        with:
+          run-arguments: --workspace . --view detail --output-file sfca_results.html --output-file sfca_results.json
+          results-artifact-name: stayhub-code-analyzer-results
+          github-token: ${{ github.token }}
+
+      - name: Enforce Code Analyzer quality gate
+        if: >-
+          steps.analyzer.outputs.exit-code > 0 ||
+          steps.analyzer.outputs.num-violations-in-changed-files > 0
+        run: |
+          echo "Code Analyzer found violations in changed files."
+          exit 1
+
+  apex-tests:
+    name: Apex Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Install Node dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Verify Prettier formatting
+        run: npm run prettier:verify
+
+      - name: Install Salesforce CLI
+        run: npm install --global @salesforce/cli@latest
+
+      - name: Authenticate Enterprise Dev Hub
+        env:
+          SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
+        run: |
+          printf '%s' "$SFDX_AUTH_URL" | sf org login sfdx-url --sfdx-url-stdin --set-default-dev-hub --alias CI-DevHub
+
+      - name: Create temporary scratch org
+        run: |
+          sf org create scratch \
+            --definition-file config/project-scratch-def.json \
+            --alias CI-Scratch \
+            --target-dev-hub CI-DevHub \
+            --duration-days 1 \
+            --wait 10
+
+      - name: Deploy Salesforce metadata
+        run: |
+          sf project deploy start \
+            --source-dir force-app/main/default \
+            --target-org CI-Scratch \
+            --wait 30
+
+      - name: Assign StayHub Admin permission set
+        run: |
+          sf org assign permset \
+            --name StayHub_Admin_Access \
+            --target-org CI-Scratch
+
+      - name: Run Apex unit tests
+        run: |
+          sf apex run test \
+            --class-names BookingRoomPricingServiceTest \
+            --class-names StayHubQualityGateDemoTest \
+            --target-org CI-Scratch \
+            --wait 30
+
+      - name: Delete temporary scratch org
+        if: always()
+        run: |
+          if sf org display --target-org CI-Scratch >/dev/null 2>&1; then
+            sf org delete scratch --target-org CI-Scratch --no-prompt
+          else
+            echo "No CI-Scratch org was created; skipping cleanup."
+          fi
