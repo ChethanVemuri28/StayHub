@@ -1,9 +1,7 @@
-
 /**
  * @description Handles booking-room trigger operations.
  */
 public without sharing class BookingRoomTriggerHandler {
-
   /**
    * @description Coordinates booking-room validation and pricing.
    * @param newRooms Booking-room records from the trigger.
@@ -15,8 +13,7 @@ public without sharing class BookingRoomTriggerHandler {
   ) {
     validateSingleHotelPerBooking(newRooms);
 
-    List<Booking_Room__c> roomsToCalculate =
-      new List<Booking_Room__c>();
+    List<Booking_Room__c> roomsToCalculate = new List<Booking_Room__c>();
 
     for (Booking_Room__c room : newRooms) {
       Boolean shouldCalculate =
@@ -68,14 +65,9 @@ public without sharing class BookingRoomTriggerHandler {
 
     // Retrieve rooms already associated with these bookings.
     for (Booking_Room__c existingRoom : [
-      SELECT
-        Id,
-        Booking__c,
-        Room__c,
-        Room__r.Room_Type__r.Hotel__c
+      SELECT Id, Booking__c, Room__c, Room__r.Room_Type__r.Hotel__c
       FROM Booking_Room__c
-      WHERE Booking__c IN :bookingIds
-      AND Id NOT IN :currentRoomIds
+      WHERE Booking__c IN :bookingIds AND Id NOT IN :currentRoomIds
       WITH SYSTEM_MODE
     ]) {
       Id hotelId = existingRoom.Room__r?.Room_Type__r?.Hotel__c;
@@ -84,10 +76,7 @@ public without sharing class BookingRoomTriggerHandler {
         bookingsWithUnknownHotel.add(existingRoom.Booking__c);
       } else {
         if (!hotelsByBooking.containsKey(existingRoom.Booking__c)) {
-          hotelsByBooking.put(
-            existingRoom.Booking__c,
-            new Set<Id>()
-          );
+          hotelsByBooking.put(existingRoom.Booking__c, new Set<Id>());
         }
 
         hotelsByBooking.get(existingRoom.Booking__c).add(hotelId);
@@ -104,10 +93,7 @@ public without sharing class BookingRoomTriggerHandler {
         WHERE Id IN :selectedRoomIds
         WITH SYSTEM_MODE
       ]) {
-        hotelByRoomId.put(
-          room.Id,
-          room.Room_Type__r?.Hotel__c
-        );
+        hotelByRoomId.put(room.Id, room.Room_Type__r?.Hotel__c);
       }
     }
 
@@ -121,9 +107,7 @@ public without sharing class BookingRoomTriggerHandler {
       Id hotelId = hotelByRoomId.get(bookingRoom.Room__c);
 
       if (hotelId == null) {
-        bookingRoom.addError(
-          'The selected room must belong to a valid hotel.'
-        );
+        bookingRoom.addError('The selected room must belong to a valid hotel.');
         continue;
       }
 
@@ -135,10 +119,7 @@ public without sharing class BookingRoomTriggerHandler {
       }
 
       if (!hotelsByBooking.containsKey(bookingRoom.Booking__c)) {
-        hotelsByBooking.put(
-          bookingRoom.Booking__c,
-          new Set<Id>()
-        );
+        hotelsByBooking.put(bookingRoom.Booking__c, new Set<Id>());
       }
 
       hotelsByBooking.get(bookingRoom.Booking__c).add(hotelId);

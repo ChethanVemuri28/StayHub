@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <SharingSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <accessMappings>
         <accessLevel>Read</accessLevel>
@@ -6,8 +6,8 @@
         <objectField>Partner_Account__c</objectField>
         <userField>Account</userField>
     </accessMappings>
-    <description>Allows hotel partners to access hotels associated with their Account.</description>
+    <description
+  >Allows hotel partners to access hotels associated with their Account.</description>
     <name>StayHub Partner Hotel Access</name>
     <profiles>partner community user</profiles>
 </SharingSet>
-

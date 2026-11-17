@@ -1,12 +1,8 @@
-
 @IsTest
 private class BookingRoomPricingServiceTest {
-
   @TestSetup
   static void setupData() {
-    Account partner = new Account(
-      Name = 'StayHub Test Partner'
-    );
+    Account partner = new Account(Name = 'StayHub Test Partner');
     insert partner;
 
     Contact guest = new Contact(
@@ -64,10 +60,7 @@ private class BookingRoomPricingServiceTest {
     return hotel;
   }
 
-  private static Room_Type__c createRoomType(
-    Id hotelId,
-    String typeName
-  ) {
+  private static Room_Type__c createRoomType(Id hotelId, String typeName) {
     Room_Type__c roomType = new Room_Type__c(
       Name = typeName,
       Hotel__c = hotelId,
@@ -80,10 +73,7 @@ private class BookingRoomPricingServiceTest {
     return roomType;
   }
 
-  private static Room__c createRoom(
-    Id roomTypeId,
-    String roomNumber
-  ) {
+  private static Room__c createRoom(Id roomTypeId, String roomNumber) {
     Room__c room = new Room__c(
       Name = 'Test Room ' + roomNumber,
       Room_Number__c = roomNumber,
@@ -117,15 +107,11 @@ private class BookingRoomPricingServiceTest {
     Booking__c booking = createBooking();
     Hotel__c hotel = createHotel('Test Hotel 101');
 
-    Room_Type__c roomType = createRoomType(
-      hotel.Id,
-      'Standard 101'
-    );
+    Room_Type__c roomType = createRoomType(hotel.Id, 'Standard 101');
 
     Room__c room = createRoom(roomType.Id, '101');
 
-    Booking_Room__c bookingRoom =
-      createBookingRoom(booking.Id, room.Id, 1000);
+    Booking_Room__c bookingRoom = createBookingRoom(booking.Id, room.Id, 1000);
 
     Test.startTest();
     insert bookingRoom;
@@ -148,15 +134,9 @@ private class BookingRoomPricingServiceTest {
       bookingRoom.Nights_for_Pricing__c
     );
 
-    System.assertEquals(
-      Decimal.valueOf('3000'),
-      bookingRoom.Room_Total__c
-    );
+    System.assertEquals(Decimal.valueOf('3000'), bookingRoom.Room_Total__c);
 
-    System.assertEquals(
-      Decimal.valueOf('3000'),
-      booking.Total_Amount__c
-    );
+    System.assertEquals(Decimal.valueOf('3000'), booking.Total_Amount__c);
   }
 
   @IsTest
@@ -164,20 +144,15 @@ private class BookingRoomPricingServiceTest {
     Booking__c booking = createBooking();
     Hotel__c hotel = createHotel('Test Hotel 201');
 
-    Room_Type__c roomType = createRoomType(
-      hotel.Id,
-      'Standard 201'
-    );
+    Room_Type__c roomType = createRoomType(hotel.Id, 'Standard 201');
 
     Room__c room = createRoom(roomType.Id, '201');
 
-    Booking_Room__c bookingRoom =
-      createBookingRoom(booking.Id, room.Id, 1000);
+    Booking_Room__c bookingRoom = createBookingRoom(booking.Id, room.Id, 1000);
 
     insert bookingRoom;
 
-    booking.Check_Out_Date__c =
-      Date.newInstance(2026, 11, 15);
+    booking.Check_Out_Date__c = Date.newInstance(2026, 11, 15);
 
     Test.startTest();
     update booking;
@@ -200,15 +175,9 @@ private class BookingRoomPricingServiceTest {
       bookingRoom.Nights_for_Pricing__c
     );
 
-    System.assertEquals(
-      Decimal.valueOf('5000'),
-      bookingRoom.Room_Total__c
-    );
+    System.assertEquals(Decimal.valueOf('5000'), bookingRoom.Room_Total__c);
 
-    System.assertEquals(
-      Decimal.valueOf('5000'),
-      booking.Total_Amount__c
-    );
+    System.assertEquals(Decimal.valueOf('5000'), booking.Total_Amount__c);
   }
 
   @IsTest
@@ -216,19 +185,15 @@ private class BookingRoomPricingServiceTest {
     Booking__c booking = createBooking();
     Hotel__c hotel = createHotel('Test Hotel 301');
 
-    Room_Type__c roomType = createRoomType(
-      hotel.Id,
-      'Standard 301'
-    );
+    Room_Type__c roomType = createRoomType(hotel.Id, 'Standard 301');
 
     Room__c room1 = createRoom(roomType.Id, '301');
     Room__c room2 = createRoom(roomType.Id, '302');
 
-    List<Booking_Room__c> bookingRooms =
-      new List<Booking_Room__c>{
-        createBookingRoom(booking.Id, room1.Id, 1000),
-        createBookingRoom(booking.Id, room2.Id, 1200)
-      };
+    List<Booking_Room__c> bookingRooms = new List<Booking_Room__c>{
+      createBookingRoom(booking.Id, room1.Id, 1000),
+      createBookingRoom(booking.Id, room2.Id, 1200)
+    };
 
     Test.startTest();
     insert bookingRooms;
@@ -240,25 +205,16 @@ private class BookingRoomPricingServiceTest {
       WHERE Id = :booking.Id
     ];
 
-    System.assertEquals(
-      Decimal.valueOf('6600'),
-      booking.Total_Amount__c
-    );
+    System.assertEquals(Decimal.valueOf('6600'), booking.Total_Amount__c);
 
     for (Booking_Room__c room : [
       SELECT Nights_for_Pricing__c, Room_Total__c
       FROM Booking_Room__c
       WHERE Booking__c = :booking.Id
     ]) {
-      System.assertEquals(
-        Decimal.valueOf('3'),
-        room.Nights_for_Pricing__c
-      );
+      System.assertEquals(Decimal.valueOf('3'), room.Nights_for_Pricing__c);
 
-      System.assertNotEquals(
-        null,
-        room.Room_Total__c
-      );
+      System.assertNotEquals(null, room.Room_Total__c);
     }
   }
 
@@ -273,29 +229,21 @@ private class BookingRoomPricingServiceTest {
     Hotel__c hotel1 = createHotel('Hotel One');
     Hotel__c hotel2 = createHotel('Hotel Two');
 
-    Room_Type__c type1 = createRoomType(
-      hotel1.Id,
-      'Standard One'
-    );
+    Room_Type__c type1 = createRoomType(hotel1.Id, 'Standard One');
 
-    Room_Type__c type2 = createRoomType(
-      hotel2.Id,
-      'Standard Two'
-    );
+    Room_Type__c type2 = createRoomType(hotel2.Id, 'Standard Two');
 
     Room__c room1 = createRoom(type1.Id, '401');
     Room__c room2 = createRoom(type2.Id, '402');
 
-    List<Booking_Room__c> bookingRooms =
-      new List<Booking_Room__c>{
-        createBookingRoom(booking.Id, room1.Id, 1000),
-        createBookingRoom(booking.Id, room2.Id, 1000)
-      };
+    List<Booking_Room__c> bookingRooms = new List<Booking_Room__c>{
+      createBookingRoom(booking.Id, room1.Id, 1000),
+      createBookingRoom(booking.Id, room2.Id, 1000)
+    };
 
     Test.startTest();
 
-    Database.SaveResult[] results =
-      Database.insert(bookingRooms, false);
+    Database.SaveResult[] results = Database.insert(bookingRooms, false);
 
     Test.stopTest();
 
@@ -303,9 +251,9 @@ private class BookingRoomPricingServiceTest {
     System.assertEquals(false, results[1].isSuccess());
 
     System.assert(
-      results[0].getErrors()[0].getMessage().contains(
-        'All rooms in a booking must belong to the same hotel.'
-      )
+      results[0].getErrors()[0]
+        .getMessage()
+        .contains('All rooms in a booking must belong to the same hotel.')
     );
   }
 
@@ -316,41 +264,29 @@ private class BookingRoomPricingServiceTest {
     Hotel__c hotel1 = createHotel('Hotel Existing');
     Hotel__c hotel2 = createHotel('Hotel New');
 
-    Room_Type__c type1 = createRoomType(
-      hotel1.Id,
-      'Existing Type'
-    );
+    Room_Type__c type1 = createRoomType(hotel1.Id, 'Existing Type');
 
-    Room_Type__c type2 = createRoomType(
-      hotel2.Id,
-      'New Type'
-    );
+    Room_Type__c type2 = createRoomType(hotel2.Id, 'New Type');
 
     Room__c room1 = createRoom(type1.Id, '501');
     Room__c room2 = createRoom(type2.Id, '502');
 
-    insert createBookingRoom(
-      booking.Id,
-      room1.Id,
-      1000
-    );
+    insert createBookingRoom(booking.Id, room1.Id, 1000);
 
-    Booking_Room__c secondRoom =
-      createBookingRoom(booking.Id, room2.Id, 1000);
+    Booking_Room__c secondRoom = createBookingRoom(booking.Id, room2.Id, 1000);
 
     Test.startTest();
 
-    Database.SaveResult result =
-      Database.insert(secondRoom, false);
+    Database.SaveResult result = Database.insert(secondRoom, false);
 
     Test.stopTest();
 
     System.assertEquals(false, result.isSuccess());
 
     System.assert(
-      result.getErrors()[0].getMessage().contains(
-        'All rooms in a booking must belong to the same hotel.'
-      )
+      result.getErrors()[0]
+        .getMessage()
+        .contains('All rooms in a booking must belong to the same hotel.')
     );
   }
 
@@ -360,16 +296,12 @@ private class BookingRoomPricingServiceTest {
 
     Hotel__c hotel = createHotel('Hotel Same');
 
-    Room_Type__c roomType = createRoomType(
-      hotel.Id,
-      'Standard Same'
-    );
+    Room_Type__c roomType = createRoomType(hotel.Id, 'Standard Same');
 
     Room__c room1 = createRoom(roomType.Id, '601');
     Room__c room2 = createRoom(roomType.Id, '602');
 
-    Booking_Room__c bookingRoom =
-      createBookingRoom(booking.Id, room1.Id, 1000);
+    Booking_Room__c bookingRoom = createBookingRoom(booking.Id, room1.Id, 1000);
 
     insert bookingRoom;
 
@@ -389,10 +321,7 @@ private class BookingRoomPricingServiceTest {
       WHERE Id = :bookingRoom.Id
     ];
 
-    System.assertEquals(
-      room2.Id,
-      savedRoom.Room__c
-    );
+    System.assertEquals(room2.Id, savedRoom.Room__c);
   }
 
   @IsTest
@@ -402,30 +331,19 @@ private class BookingRoomPricingServiceTest {
     Hotel__c hotel1 = createHotel('Hotel Original');
     Hotel__c hotel2 = createHotel('Hotel Replacement');
 
-    Room_Type__c type1 = createRoomType(
-      hotel1.Id,
-      'Original Type'
-    );
+    Room_Type__c type1 = createRoomType(hotel1.Id, 'Original Type');
 
-    Room_Type__c type2 = createRoomType(
-      hotel2.Id,
-      'Replacement Type'
-    );
+    Room_Type__c type2 = createRoomType(hotel2.Id, 'Replacement Type');
 
     Room__c room1 = createRoom(type1.Id, '701');
     Room__c room2 = createRoom(type1.Id, '702');
     Room__c room3 = createRoom(type2.Id, '703');
 
-    Booking_Room__c firstRoom =
-      createBookingRoom(booking.Id, room1.Id, 1000);
+    Booking_Room__c firstRoom = createBookingRoom(booking.Id, room1.Id, 1000);
 
-    Booking_Room__c secondRoom =
-      createBookingRoom(booking.Id, room2.Id, 1000);
+    Booking_Room__c secondRoom = createBookingRoom(booking.Id, room2.Id, 1000);
 
-    insert new List<Booking_Room__c>{
-      firstRoom,
-      secondRoom
-    };
+    insert new List<Booking_Room__c>{ firstRoom, secondRoom };
 
     // Update only the Room lookup field.
     Booking_Room__c roomUpdate = new Booking_Room__c(
@@ -435,8 +353,7 @@ private class BookingRoomPricingServiceTest {
 
     Test.startTest();
 
-    Database.SaveResult result =
-      Database.update(roomUpdate, false);
+    Database.SaveResult result = Database.update(roomUpdate, false);
 
     Test.stopTest();
 
@@ -447,9 +364,9 @@ private class BookingRoomPricingServiceTest {
     );
 
     System.assert(
-      result.getErrors()[0].getMessage().contains(
-        'All rooms in a booking must belong to the same hotel.'
-      ),
+      result.getErrors()[0]
+        .getMessage()
+        .contains('All rooms in a booking must belong to the same hotel.'),
       'Unexpected error: ' + result.getErrors()[0].getMessage()
     );
   }
@@ -461,21 +378,14 @@ private class BookingRoomPricingServiceTest {
     Hotel__c hotel1 = createHotel('Hotel Before');
     Hotel__c hotel2 = createHotel('Hotel After');
 
-    Room_Type__c type1 = createRoomType(
-      hotel1.Id,
-      'Before Type'
-    );
+    Room_Type__c type1 = createRoomType(hotel1.Id, 'Before Type');
 
-    Room_Type__c type2 = createRoomType(
-      hotel2.Id,
-      'After Type'
-    );
+    Room_Type__c type2 = createRoomType(hotel2.Id, 'After Type');
 
     Room__c room1 = createRoom(type1.Id, '801');
     Room__c room2 = createRoom(type2.Id, '802');
 
-    Booking_Room__c bookingRoom =
-      createBookingRoom(booking.Id, room1.Id, 1000);
+    Booking_Room__c bookingRoom = createBookingRoom(booking.Id, room1.Id, 1000);
 
     insert bookingRoom;
 
@@ -495,10 +405,7 @@ private class BookingRoomPricingServiceTest {
       WHERE Id = :bookingRoom.Id
     ];
 
-    System.assertEquals(
-      room2.Id,
-      savedRoom.Room__c
-    );
+    System.assertEquals(room2.Id, savedRoom.Room__c);
   }
 
   // ------------------------------------------------------------
@@ -507,19 +414,11 @@ private class BookingRoomPricingServiceTest {
 
   @IsTest
   static void testRoomHotelRelationshipResolution() {
-    Hotel__c hotel = createHotel(
-      'Relationship Test Hotel'
-    );
+    Hotel__c hotel = createHotel('Relationship Test Hotel');
 
-    Room_Type__c roomType = createRoomType(
-      hotel.Id,
-      'Relationship Test Type'
-    );
+    Room_Type__c roomType = createRoomType(hotel.Id, 'Relationship Test Type');
 
-    Room__c room = createRoom(
-      roomType.Id,
-      '901'
-    );
+    Room__c room = createRoom(roomType.Id, '901');
 
     Room__c queriedRoom = [
       SELECT Id, Room_Type__r.Hotel__c
@@ -536,31 +435,18 @@ private class BookingRoomPricingServiceTest {
 
   @IsTest
   static void testHotelRelationshipInSystemMode() {
-    Hotel__c hotel1 = createHotel(
-      'System Mode Hotel One'
-    );
+    Hotel__c hotel1 = createHotel('System Mode Hotel One');
 
-    Hotel__c hotel2 = createHotel(
-      'System Mode Hotel Two'
-    );
+    Hotel__c hotel2 = createHotel('System Mode Hotel Two');
 
-    Room_Type__c type1 = createRoomType(
-      hotel1.Id,
-      'System Mode Type One'
-    );
+    Room_Type__c type1 = createRoomType(hotel1.Id, 'System Mode Type One');
 
-    Room_Type__c type2 = createRoomType(
-      hotel2.Id,
-      'System Mode Type Two'
-    );
+    Room_Type__c type2 = createRoomType(hotel2.Id, 'System Mode Type Two');
 
     Room__c room1 = createRoom(type1.Id, '911');
     Room__c room2 = createRoom(type2.Id, '912');
 
-    Set<Id> roomIds = new Set<Id>{
-      room1.Id,
-      room2.Id
-    };
+    Set<Id> roomIds = new Set<Id>{ room1.Id, room2.Id };
 
     Map<Id, Id> hotelByRoomId = new Map<Id, Id>();
 
@@ -570,21 +456,12 @@ private class BookingRoomPricingServiceTest {
       WHERE Id IN :roomIds
       WITH SYSTEM_MODE
     ]) {
-      hotelByRoomId.put(
-        room.Id,
-        room.Room_Type__r?.Hotel__c
-      );
+      hotelByRoomId.put(room.Id, room.Room_Type__r?.Hotel__c);
     }
 
-    System.assertEquals(
-      hotel1.Id,
-      hotelByRoomId.get(room1.Id)
-    );
+    System.assertEquals(hotel1.Id, hotelByRoomId.get(room1.Id));
 
-    System.assertEquals(
-      hotel2.Id,
-      hotelByRoomId.get(room2.Id)
-    );
+    System.assertEquals(hotel2.Id, hotelByRoomId.get(room2.Id));
 
     System.assertNotEquals(
       hotelByRoomId.get(room1.Id),
@@ -597,39 +474,25 @@ private class BookingRoomPricingServiceTest {
   static void testHandlerRejectsDifferentHotelsDirectly() {
     Booking__c booking = createBooking();
 
-    Hotel__c hotel1 = createHotel(
-      'Direct Test Hotel One'
-    );
+    Hotel__c hotel1 = createHotel('Direct Test Hotel One');
 
-    Hotel__c hotel2 = createHotel(
-      'Direct Test Hotel Two'
-    );
+    Hotel__c hotel2 = createHotel('Direct Test Hotel Two');
 
-    Room_Type__c type1 = createRoomType(
-      hotel1.Id,
-      'Direct Test Type One'
-    );
+    Room_Type__c type1 = createRoomType(hotel1.Id, 'Direct Test Type One');
 
-    Room_Type__c type2 = createRoomType(
-      hotel2.Id,
-      'Direct Test Type Two'
-    );
+    Room_Type__c type2 = createRoomType(hotel2.Id, 'Direct Test Type Two');
 
     Room__c room1 = createRoom(type1.Id, '921');
     Room__c room2 = createRoom(type2.Id, '922');
 
-    List<Booking_Room__c> bookingRooms =
-      new List<Booking_Room__c>{
-        createBookingRoom(booking.Id, room1.Id, 1000),
-        createBookingRoom(booking.Id, room2.Id, 1000)
-      };
+    List<Booking_Room__c> bookingRooms = new List<Booking_Room__c>{
+      createBookingRoom(booking.Id, room1.Id, 1000),
+      createBookingRoom(booking.Id, room2.Id, 1000)
+    };
 
     Test.startTest();
 
-    BookingRoomTriggerHandler.handleBeforeSave(
-      bookingRooms,
-      null
-    );
+    BookingRoomTriggerHandler.handleBeforeSave(bookingRooms, null);
 
     Test.stopTest();
 
@@ -654,8 +517,7 @@ private class BookingRoomPricingServiceTest {
   static void testInvalidBookingDatesRejected() {
     Booking__c booking = createBooking();
 
-    booking.Check_Out_Date__c =
-      booking.Check_In_Date__c;
+    booking.Check_Out_Date__c = booking.Check_In_Date__c;
 
     Test.startTest();
 
@@ -666,12 +528,10 @@ private class BookingRoomPricingServiceTest {
         false,
         'Expected an exception due to invalid booking dates.'
       );
-
     } catch (DmlException e) {
       System.assert(
-        e.getMessage().contains(
-          'Check-out date must be later than check-in date.'
-        ),
+        e.getMessage()
+          .contains('Check-out date must be later than check-in date.'),
         'Unexpected error message: ' + e.getMessage()
       );
     }
