@@ -50,3 +50,6 @@ $RECYCLE.BIN/
 github-ci-auth.txt
 
 _backups/
+temp/
+
+code-analyzer-results.html
