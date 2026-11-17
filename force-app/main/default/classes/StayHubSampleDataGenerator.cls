@@ -81,38 +81,16 @@ public with sharing class StayHubSampleDataGenerator implements Database.Batchab
     return indexes;
   }
 
-  @SuppressWarnings('PMD.CognitiveComplexity')
-  @SuppressWarnings('PMD.CyclomaticComplexity')
-  @SuppressWarnings('PMD.NcssCount')
   public void execute(Database.BatchableContext bc, List<Integer> scope) {
     if (scope.isEmpty()) {
       return;
     }
 
-    Id partnerId = StayHubSampleDataFactory.PARTNER_ACCOUNT_ID;
-    Id guestId = StayHubSampleDataFactory.GUEST_CONTACT_ID;
+    StayHubSampleDataFactory.ReferenceData referenceData = StayHubSampleDataFactory.validateReferenceData();
 
-    Account partner = [
-      SELECT Id
-      FROM Account
-      WHERE Id = :partnerId
-      LIMIT 1
-    ];
-
-    Contact guest = [
-      SELECT Id, AccountId
-      FROM Contact
-      WHERE Id = :guestId
-      LIMIT 1
-    ];
-
-    if (guest.AccountId != partner.Id) {
-      throw new AuraHandledException(
-        'Configured guest contact does not belong to configured partner account.'
-      );
-    }
-
-    Map<String, Rate_Plan__mdt> plans = Rate_Plan__mdt.getAll();
+    Account partner = referenceData.partnerAccount;
+    Contact guest = referenceData.guestContact;
+    Map<String, Rate_Plan__mdt> plans = referenceData.ratePlans;
 
     Set<String> names = new Set<String>();
 
@@ -232,6 +210,7 @@ public with sharing class StayHubSampleDataGenerator implements Database.Batchab
     insert bookingsToInsert;
 
     List<Booking_Room__c> bookingRooms = new List<Booking_Room__c>();
+
     List<Payment__c> payments = new List<Payment__c>();
 
     for (Bundle b : bundles) {
