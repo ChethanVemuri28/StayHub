@@ -19,11 +19,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -43,11 +39,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -67,11 +59,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -91,11 +79,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -115,11 +99,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -139,11 +119,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -163,11 +139,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -187,11 +159,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -211,11 +179,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -235,11 +199,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -259,11 +219,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -283,11 +239,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -307,11 +259,7 @@
       "rule": "ApexDoc",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "Documentation",
-        "Apex"
-      ],
+      "tags": ["Recommended", "Documentation", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -331,11 +279,7 @@
       "rule": "AvoidDebugStatements",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "Performance",
-        "Apex"
-      ],
+      "tags": ["Recommended", "Performance", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -355,11 +299,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -379,11 +319,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -403,11 +339,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -427,11 +359,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -451,11 +379,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -475,11 +399,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -499,11 +419,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -523,11 +439,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -547,11 +459,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -571,11 +479,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -595,11 +499,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -619,11 +519,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -643,11 +539,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -667,11 +559,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {
@@ -691,11 +579,7 @@
       "rule": "ApexUnitTestClassShouldHaveRunAs",
       "engine": "pmd",
       "severity": 4,
-      "tags": [
-        "Recommended",
-        "BestPractices",
-        "Apex"
-      ],
+      "tags": ["Recommended", "BestPractices", "Apex"],
       "primaryLocationIndex": 0,
       "locations": [
         {

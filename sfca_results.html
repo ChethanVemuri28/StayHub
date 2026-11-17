@@ -11,11 +11,13 @@
     <script type="module" crossorigin>
       (function () {
         const relList = document.createElement("link").relList;
-        if (
-          !(relList && relList.supports && relList.supports("modulepreload"))
-        ) {
+        if (!(
+          relList &&
+          relList.supports &&
+          relList.supports("modulepreload")
+        )) {
           for (const link of document.querySelectorAll(
-            'link[rel="modulepreload"]',
+            'link[rel="modulepreload"]'
           ))
             processPreload(link);
           new MutationObserver((mutations) => {
@@ -47,15 +49,640 @@
           fetch(link.href, fetchOpts);
         }
       })();
-      
-// ==== START OF VIOLATIONS ====
-        const data = {"runDir":"D:\\StayHub\\","violationCounts":{"total":29,"sev1":0,"sev2":0,"sev3":0,"sev4":29,"sev5":0},"versions":{"code-analyzer":"0.53.0","regex":"0.40.0","cpd":"0.46.0","pmd":"0.46.0"},"violations":[{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":106,"startColumn":10,"endLine":140,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":143,"startColumn":10,"endLine":181,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":184,"startColumn":10,"endLine":219,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":226,"startColumn":10,"endLine":258,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":261,"startColumn":10,"endLine":291,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":294,"startColumn":10,"endLine":325,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":328,"startColumn":10,"endLine":372,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":375,"startColumn":10,"endLine":409,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":416,"startColumn":10,"endLine":434,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":437,"startColumn":10,"endLine":471,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":474,"startColumn":10,"endLine":510,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls","startLine":517,"startColumn":10,"endLine":540,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexDoc","engine":"pmd","severity":4,"tags":["Recommended","Documentation","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataFactory.cls","startLine":7,"startColumn":10,"endLine":11,"endColumn":4}],"message":"Missing ApexDoc comment","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_documentation.html#apexdoc"]},{"rule":"AvoidDebugStatements","engine":"pmd","severity":4,"tags":["Recommended","Performance","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGenerator.cls","startLine":74,"startColumn":7,"endLine":77,"endColumn":8}],"message":"Avoid debug statements since they impact on performance","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_performance.html#avoiddebugstatements"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":26,"startColumn":10,"endLine":31,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":34,"startColumn":10,"endLine":39,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":42,"startColumn":10,"endLine":44,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":47,"startColumn":10,"endLine":57,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":60,"startColumn":10,"endLine":70,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":73,"startColumn":10,"endLine":83,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":86,"startColumn":10,"endLine":149,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":152,"startColumn":10,"endLine":163,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":166,"startColumn":10,"endLine":180,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":183,"startColumn":10,"endLine":197,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":200,"startColumn":10,"endLine":215,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":218,"startColumn":10,"endLine":233,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":236,"startColumn":10,"endLine":261,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":264,"startColumn":10,"endLine":279,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]},{"rule":"ApexUnitTestClassShouldHaveRunAs","engine":"pmd","severity":4,"tags":["Recommended","BestPractices","Apex"],"primaryLocationIndex":0,"locations":[{"file":"force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls","startLine":282,"startColumn":10,"endLine":297,"endColumn":4}],"message":"Apex unit test classes should have at least one System.runAs() call","resources":["https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"]}]};
-// ==== END OF VIOLATIONS ====
-      
+
+      // ==== START OF VIOLATIONS ====
+      const data = {
+        runDir: "D:\\StayHub\\",
+        violationCounts: {
+          total: 29,
+          sev1: 0,
+          sev2: 0,
+          sev3: 0,
+          sev4: 29,
+          sev5: 0
+        },
+        versions: {
+          "code-analyzer": "0.53.0",
+          regex: "0.40.0",
+          cpd: "0.46.0",
+          pmd: "0.46.0"
+        },
+        violations: [
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 106,
+                startColumn: 10,
+                endLine: 140,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 143,
+                startColumn: 10,
+                endLine: 181,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 184,
+                startColumn: 10,
+                endLine: 219,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 226,
+                startColumn: 10,
+                endLine: 258,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 261,
+                startColumn: 10,
+                endLine: 291,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 294,
+                startColumn: 10,
+                endLine: 325,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 328,
+                startColumn: 10,
+                endLine: 372,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 375,
+                startColumn: 10,
+                endLine: 409,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 416,
+                startColumn: 10,
+                endLine: 434,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 437,
+                startColumn: 10,
+                endLine: 471,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 474,
+                startColumn: 10,
+                endLine: 510,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+                startLine: 517,
+                startColumn: 10,
+                endLine: 540,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexDoc",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "Documentation", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataFactory.cls",
+                startLine: 7,
+                startColumn: 10,
+                endLine: 11,
+                endColumn: 4
+              }
+            ],
+            message: "Missing ApexDoc comment",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_documentation.html#apexdoc"
+            ]
+          },
+          {
+            rule: "AvoidDebugStatements",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "Performance", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGenerator.cls",
+                startLine: 74,
+                startColumn: 7,
+                endLine: 77,
+                endColumn: 8
+              }
+            ],
+            message: "Avoid debug statements since they impact on performance",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_performance.html#avoiddebugstatements"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 26,
+                startColumn: 10,
+                endLine: 31,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 34,
+                startColumn: 10,
+                endLine: 39,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 42,
+                startColumn: 10,
+                endLine: 44,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 47,
+                startColumn: 10,
+                endLine: 57,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 60,
+                startColumn: 10,
+                endLine: 70,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 73,
+                startColumn: 10,
+                endLine: 83,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 86,
+                startColumn: 10,
+                endLine: 149,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 152,
+                startColumn: 10,
+                endLine: 163,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 166,
+                startColumn: 10,
+                endLine: 180,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 183,
+                startColumn: 10,
+                endLine: 197,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 200,
+                startColumn: 10,
+                endLine: 215,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 218,
+                startColumn: 10,
+                endLine: 233,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 236,
+                startColumn: 10,
+                endLine: 261,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 264,
+                startColumn: 10,
+                endLine: 279,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          },
+          {
+            rule: "ApexUnitTestClassShouldHaveRunAs",
+            engine: "pmd",
+            severity: 4,
+            tags: ["Recommended", "BestPractices", "Apex"],
+            primaryLocationIndex: 0,
+            locations: [
+              {
+                file: "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+                startLine: 282,
+                startColumn: 10,
+                endLine: 297,
+                endColumn: 4
+              }
+            ],
+            message:
+              "Apex unit test classes should have at least one System.runAs() call",
+            resources: [
+              "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+            ]
+          }
+        ]
+      };
+      // ==== END OF VIOLATIONS ====
+
       class Model {
         constructor(data2) {
-          (this.violations = this.processViolations(data2)),
-            (this.fileCache = /* @__PURE__ */ new Map());
+          ((this.violations = this.processViolations(data2)),
+            (this.fileCache = /* @__PURE__ */ new Map()));
         }
         sanitize(obj, path, defaultValue = "") {
           return path
@@ -63,7 +690,7 @@
             .reduce(
               (acc, part) =>
                 acc && void 0 !== acc[part] ? acc[part] : defaultValue,
-              obj,
+              obj
             );
         }
         getFile(fullPath) {
@@ -105,9 +732,9 @@
                 primaryLocationIndex,
                 locations: Array.isArray(violation.locations)
                   ? violation.locations
-                  : [],
+                  : []
               };
-            },
+            }
           );
         }
         filterViolations(severityFilter, engineFilter, searchTerm) {
@@ -121,18 +748,18 @@
                 searchRegex.test(violation.file) ||
                 searchRegex.test(violation.rule) ||
                 searchRegex.test(violation.tags.join(", ")) ||
-                searchRegex.test(violation.message)),
+                searchRegex.test(violation.message))
           );
         }
         sortViolations(data2, sortColumn, sortDirection) {
           return [...data2].sort((a, b) => {
             let aValue, bValue;
             if ("file" === sortColumn)
-              (aValue = this.getFile(a[sortColumn])),
-                (bValue = this.getFile(b[sortColumn]));
+              ((aValue = this.getFile(a[sortColumn])),
+                (bValue = this.getFile(b[sortColumn])));
             else if ("tags" === sortColumn)
-              (aValue = a[sortColumn].join(", ")),
-                (bValue = b[sortColumn].join(", "));
+              ((aValue = a[sortColumn].join(", ")),
+                (bValue = b[sortColumn].join(", ")));
             else if (
               "startLine" === sortColumn ||
               "startColumn" === sortColumn
@@ -144,10 +771,10 @@
               ) {
                 const endColumn =
                   "startLine" === sortColumn ? "endLine" : "endColumn";
-                (aValue = a[endColumn] || a[sortColumn]),
-                  (bValue = b[endColumn] || b[sortColumn]);
+                ((aValue = a[endColumn] || a[sortColumn]),
+                  (bValue = b[endColumn] || b[sortColumn]));
               }
-            } else (aValue = a[sortColumn]), (bValue = b[sortColumn]);
+            } else ((aValue = a[sortColumn]), (bValue = b[sortColumn]));
             return "string" == typeof aValue && "string" == typeof bValue
               ? "asc" === sortDirection
                 ? aValue.localeCompare(bValue, void 0, { sensitivity: "base" })
@@ -160,7 +787,7 @@
         groupBy(data2, key) {
           return data2.reduce((acc, item) => {
             const group = acc.get(item[key]) || [];
-            return group.push(item), acc.set(item[key], group), acc;
+            return (group.push(item), acc.set(item[key], group), acc);
           }, /* @__PURE__ */ new Map());
         }
         groupByfile(data2) {
@@ -178,7 +805,7 @@
       }
       class View {
         constructor(model) {
-          (this.model = model),
+          ((this.model = model),
             (this.defaultSort = { column: "file", direction: "asc" }),
             (this.currentViolations = []),
             (this.currentViolationIndex = -1),
@@ -192,7 +819,7 @@
             (this.panelContent = document.querySelector(".panel-content")),
             (this.panelPrev = document.getElementById("prev")),
             (this.panelNext = document.getElementById("next")),
-            (this.panelClose = document.getElementById("panelClose"));
+            (this.panelClose = document.getElementById("panelClose")));
         }
         getSeverityText(severity) {
           return (
@@ -201,7 +828,7 @@
               2: "Severity 2: High",
               3: "Severity 3: Moderate",
               4: "Severity 4: Low",
-              5: "Severity 5: Info",
+              5: "Severity 5: Info"
             }[severity] || ""
           );
         }
@@ -267,22 +894,25 @@
         }
         updateSummary(data2) {
           const uniqueFiles = new Set(data2.map((v) => v.file));
-          0 === data2.length
+          (0 === data2.length
             ? (this.summary.textContent = "Found 0 violations")
             : (this.summary.textContent = `Found ${data2.length} violation${1 !== data2.length ? "s" : ""} across ${uniqueFiles.size} file${1 !== uniqueFiles.size ? "s" : ""}`),
-            this.violationsTable.classList.toggle("hidden", 0 === data2.length);
+            this.violationsTable.classList.toggle(
+              "hidden",
+              0 === data2.length
+            ));
         }
         updateBoxes(data2) {
           const counts = data2.reduce(
               (acc, v) => ((acc[v.severity] = (acc[v.severity] || 0) + 1), acc),
-              {},
+              {}
             ),
             severityNames = {
               1: "Critical",
               2: "High",
               3: "Moderate",
               4: "Low",
-              5: "Info",
+              5: "Info"
             };
           for (let i = 1; i <= 5; i++) {
             const count = counts[i] || 0;
@@ -291,21 +921,21 @@
             box &&
               box.setAttribute(
                 "aria-label",
-                `Severity ${i}, ${severityNames[i]}: ${count} violations`,
+                `Severity ${i}, ${severityNames[i]}: ${count} violations`
               );
           }
         }
         updateBoxesAriaLabels(filteredData) {
           const filteredCounts = filteredData.reduce(
               (acc, v) => ((acc[v.severity] = (acc[v.severity] || 0) + 1), acc),
-              {},
+              {}
             ),
             severityNames = {
               1: "Critical",
               2: "High",
               3: "Moderate",
               4: "Low",
-              5: "Info",
+              5: "Info"
             };
           for (let i = 1; i <= 5; i++) {
             const count = filteredCounts[i] || 0,
@@ -313,7 +943,7 @@
             box &&
               box.setAttribute(
                 "aria-label",
-                `Severity ${i}, ${severityNames[i]}: ${count} violations`,
+                `Severity ${i}, ${severityNames[i]}: ${count} violations`
               );
           }
         }
@@ -334,11 +964,11 @@
           );
         }
         clearFilters() {
-          (document.getElementById("severityFilter").value = ""),
+          ((document.getElementById("severityFilter").value = ""),
             (document.getElementById("engineFilter").value = ""),
             (document.getElementById("searchInput").value = ""),
             this.updateReset(),
-            this.updateTable();
+            this.updateTable());
         }
         populateEngine(engines) {
           document.getElementById("engineFilter").innerHTML = `
@@ -353,7 +983,7 @@
         }
         populateRow(violation) {
           const row = this.tableBody.insertRow();
-          (row.dataset.index = this.model.violations.indexOf(violation)),
+          ((row.dataset.index = this.model.violations.indexOf(violation)),
             (row.tabIndex = 0),
             (row.innerHTML = `
       <td class="file">${this.model.getFile(violation.file)}</td>
@@ -367,39 +997,39 @@
       <td class="tags">${violation.tags.sort().join(", ")}</td>
       <td class="startLine">${this.getLineDisplay(violation)}</td>
       <td class="startColumn">${this.getColumnDisplay(violation)}</td>
-    `);
+    `));
         }
         populateTable(data2, groupBy) {
-          (this.tableBody.innerHTML = ""),
+          ((this.tableBody.innerHTML = ""),
             this.violationsTable.classList.toggle("ungrouped", "" === groupBy),
             "file" === groupBy
               ? this.populateGroupedTable(this.model.groupByfile(data2), false)
               : "severity" === groupBy
                 ? this.populateGroupedTable(
                     this.model.groupBySeverity(data2),
-                    true,
+                    true
                   )
                 : "engine" === groupBy
                   ? this.populateGroupedTable(
                       this.model.groupByEngine(data2),
-                      false,
+                      false
                     )
                   : "rule" === groupBy
                     ? this.populateGroupedTable(
                         this.model.groupByRule(data2),
-                        false,
+                        false
                       )
                     : data2.forEach((violation) => this.populateRow(violation)),
-            this.updateSummary(data2);
+            this.updateSummary(data2));
         }
         populateGroupedTable(groupedData, isSeverity) {
           groupedData.forEach((violations, groupKey) => {
-            (this.tableBody.insertRow().innerHTML = `<td colspan="8" class="group">
+            ((this.tableBody.insertRow().innerHTML = `<td colspan="8" class="group">
         ${isSeverity ? `<span class="dot sev${this.getSeverityValue(parseInt(groupKey))}"></span>` : ""}
         ${isSeverity ? this.getSeverityText(parseInt(groupKey)) : groupKey}
         <span class="count">(${violations.length})</span>
       </td>`),
-              violations.forEach((violation) => this.populateRow(violation));
+              violations.forEach((violation) => this.populateRow(violation)));
           });
         }
         updateTable() {
@@ -413,46 +1043,46 @@
             filteredViolations = this.model.filterViolations(
               severityFilter,
               engineFilter,
-              searchTerm,
+              searchTerm
             ),
             sortedViolations = this.model.sortViolations(
               filteredViolations,
               this.defaultSort.column,
-              this.defaultSort.direction,
+              this.defaultSort.direction
             );
-          (this.currentViolations = sortedViolations),
+          ((this.currentViolations = sortedViolations),
             this.populateTable(sortedViolations, groupBy),
             this.updateSummary(sortedViolations),
             this.updateBoxesAriaLabels(sortedViolations),
             this.toggleBoxes(severityFilter),
-            this.updateReset();
+            this.updateReset());
         }
         updateSorting(column) {
-          this.defaultSort.column === column
+          (this.defaultSort.column === column
             ? (this.defaultSort.direction =
                 "asc" === this.defaultSort.direction ? "desc" : "asc")
             : ((this.defaultSort.column = column),
               (this.defaultSort.direction = "asc")),
-            this.updateArrow();
+            this.updateArrow());
         }
         updateArrow() {
           document.querySelectorAll("#violationsTable th").forEach((th) => {
-            th.classList.remove("asc", "desc"),
+            (th.classList.remove("asc", "desc"),
               th.dataset.sort === this.defaultSort.column
                 ? (th.classList.add(this.defaultSort.direction),
                   th.setAttribute(
                     "aria-sort",
                     "asc" === this.defaultSort.direction
                       ? "ascending"
-                      : "descending",
+                      : "descending"
                   ))
-                : th.setAttribute("aria-sort", "none");
+                : th.setAttribute("aria-sort", "none"));
           });
         }
         updatePagination() {
-          (this.panelPrev.disabled = this.currentViolationIndex <= 0),
+          ((this.panelPrev.disabled = this.currentViolationIndex <= 0),
             (this.panelNext.disabled =
-              this.currentViolationIndex >= this.currentViolations.length - 1);
+              this.currentViolationIndex >= this.currentViolations.length - 1));
           const contextText = `Violation ${this.currentViolationIndex + 1} of ${this.currentViolations.length}`;
           document.getElementById("panel-title").textContent = contextText;
         }
@@ -461,7 +1091,7 @@
               { label: "Rule", content: violation.rule },
               {
                 label: "Severity",
-                content: this.getSeverityContent(violation.severity),
+                content: this.getSeverityContent(violation.severity)
               },
               { label: "Engine", content: violation.engine },
               { label: "Message", content: violation.message },
@@ -471,28 +1101,28 @@
                 content:
                   violation.locations.length <= 1
                     ? this.getLocation(violation)
-                    : this.getLocationsList(violation),
+                    : this.getLocationsList(violation)
               },
               {
                 label: "Tags",
                 content:
-                  violation.tags.length > 0 ? violation.tags.join(", ") : "",
+                  violation.tags.length > 0 ? violation.tags.join(", ") : ""
               },
               {
                 label: "Resources",
-                content: this.getResourcesList(violation.resources),
-              },
+                content: this.getResourcesList(violation.resources)
+              }
             ],
             dl = document.createElement("dl");
-          panelFields.forEach(({ label, content }) => {
+          (panelFields.forEach(({ label, content }) => {
             content && (dl.innerHTML += `<dt>${label}</dt><dd>${content}</dd>`);
           }),
             (this.panelContent.innerHTML = ""),
-            this.panelContent.appendChild(dl);
+            this.panelContent.appendChild(dl));
         }
         getFocusableElements() {
           return this.panel.querySelectorAll(
-            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
           );
         }
         trapFocus(event) {
@@ -507,8 +1137,8 @@
                 (event.preventDefault(), firstElement.focus()));
         }
         showPanel(violation, triggeringElement = null) {
-          (this.currentViolationIndex = this.currentViolations.findIndex(
-            (v) => v === violation,
+          ((this.currentViolationIndex = this.currentViolations.findIndex(
+            (v) => v === violation
           )),
             (this.triggeringElement = triggeringElement),
             this.populatePanel(violation),
@@ -518,7 +1148,7 @@
             (document.body.style.overflow = "hidden"),
             setTimeout(() => {
               this.panel.focus();
-            }, 100);
+            }, 100));
         }
         paginatePanel(direction) {
           const newIndex = this.currentViolationIndex + direction;
@@ -526,18 +1156,18 @@
             this.currentViolationIndex = newIndex;
             const violation =
               this.currentViolations[this.currentViolationIndex];
-            this.populatePanel(violation), this.updatePagination();
+            (this.populatePanel(violation), this.updatePagination());
           }
         }
         hidePanel() {
-          this.overlay.classList.remove("visible"),
+          (this.overlay.classList.remove("visible"),
             this.panel.classList.remove("visible"),
             setTimeout(() => {
-              (document.body.style.overflow = ""),
+              ((document.body.style.overflow = ""),
                 this.triggeringElement &&
                   this.triggeringElement.focus &&
-                  this.triggeringElement.focus();
-            }, 300);
+                  this.triggeringElement.focus());
+            }, 300));
         }
         populateVersions(versions) {
           if (!versions || 0 === Object.keys(versions).length) return;
@@ -548,7 +1178,7 @@
                 ([key, value]) => `<span class="version">
               <span class="version-name">${key}</span>
               <span class="version-number">v${value}</span>
-            </span>`,
+            </span>`
               )
               .join("")}</p>` + footer.innerHTML;
         }
@@ -557,29 +1187,29 @@
         constructor(data2) {
           const parsedData =
             "string" == typeof data2 ? JSON.parse(data2) : data2;
-          (this.model = new Model(parsedData)),
-            (this.view = new View(this.model));
+          ((this.model = new Model(parsedData)),
+            (this.view = new View(this.model)));
           const engines = this.model.getEngines();
           this.view.populateEngine(engines);
           const violations = this.model.violations;
-          this.view.updateSummary(violations),
+          (this.view.updateSummary(violations),
             this.view.updateBoxes(violations),
             this.view.toggleBoxes(""),
             this.view.updateTable(),
             this.view.updateArrow(),
             this.view.updateReset(),
             this.view.populateVersions(this.model.getVersions()),
-            this.eventListeners();
+            this.eventListeners());
         }
         handleSeverityBoxClick(event) {
           const severity = event.currentTarget.dataset.severity,
             severityFilter = document.getElementById("severityFilter");
-          (severityFilter.value =
+          ((severityFilter.value =
             severityFilter.value === severity ? "" : severity),
-            this.view.updateTable();
+            this.view.updateTable());
         }
         handleResetClick() {
-          this.view.updateTable(), this.view.clearFilters();
+          (this.view.updateTable(), this.view.clearFilters());
         }
         handleTableHeaderClick(event) {
           const th = event.target.closest("th");
@@ -596,8 +1226,8 @@
           }
         }
         handleGroupBy(value) {
-          (document.getElementById("groupBy").value = value),
-            this.view.updateTable();
+          ((document.getElementById("groupBy").value = value),
+            this.view.updateTable());
         }
         handleShortcuts(event) {
           if (this.view.overlay.classList.contains("visible"))
@@ -624,7 +1254,7 @@
             arrowup: () => this.handleArrowKey(-1),
             arrowleft: () => this.handleArrowKey(-1),
             arrowdown: () => this.handleArrowKey(1),
-            arrowright: () => this.handleArrowKey(1),
+            arrowright: () => this.handleArrowKey(1)
           }[event.key.toLowerCase()];
           action && (event.preventDefault(), action());
         }
@@ -638,10 +1268,10 @@
             this.view.paginatePanel(direction);
         }
         eventListeners() {
-          document.querySelectorAll(".box").forEach((box) => {
+          (document.querySelectorAll(".box").forEach((box) => {
             box.addEventListener(
               "click",
-              this.handleSeverityBoxClick.bind(this),
+              this.handleSeverityBoxClick.bind(this)
             );
           }),
             ["severityFilter", "engineFilter", "groupBy"].forEach((id) => {
@@ -649,7 +1279,7 @@
                 .getElementById(id)
                 .addEventListener(
                   "change",
-                  this.view.updateTable.bind(this.view),
+                  this.view.updateTable.bind(this.view)
                 );
             }),
             document
@@ -657,13 +1287,13 @@
               .addEventListener("input", this.view.updateTable.bind(this.view)),
             this.view.resetButton.addEventListener(
               "click",
-              this.handleResetClick.bind(this),
+              this.handleResetClick.bind(this)
             ),
             document
               .querySelector("#violationsTable thead")
               .addEventListener(
                 "click",
-                this.handleTableHeaderClick.bind(this),
+                this.handleTableHeaderClick.bind(this)
               ),
             document
               .querySelector("#violationsTable tbody")
@@ -672,18 +1302,18 @@
               e.target === this.view.overlay && this.view.hidePanel();
             }),
             this.view.panelPrev.addEventListener("click", () =>
-              this.view.paginatePanel(-1),
+              this.view.paginatePanel(-1)
             ),
             this.view.panelNext.addEventListener("click", () =>
-              this.view.paginatePanel(1),
+              this.view.paginatePanel(1)
             ),
             this.view.panelClose.addEventListener("click", (e) => {
-              e.preventDefault(), this.view.hidePanel();
+              (e.preventDefault(), this.view.hidePanel());
             }),
             document.addEventListener(
               "keydown",
-              this.handleShortcuts.bind(this),
-            );
+              this.handleShortcuts.bind(this)
+            ));
         }
       })(data);
     </script>
@@ -1648,11 +2278,10 @@
         <h1 class="logo">Salesforce</h1>
         <h2 class="title">
           <strong class="text">Code Analyzer Report</strong> –
-          
-<!-- START OF TIMESTAMP -->
-        <span class="timestamp">Nov 17, 2026, 3:33 PM</span>
-<!-- END OF TIMESTAMP -->
-      
+
+          <!-- START OF TIMESTAMP -->
+          <span class="timestamp">Nov 17, 2026, 3:33 PM</span>
+          <!-- END OF TIMESTAMP -->
         </h2>
         <a
           class="help"
@@ -1800,10 +2429,9 @@
         <p>
           Generated by Code Analyzer from path:
 
-<!-- START OF RUNDIR -->
-        <code class="rundir">D:\StayHub\</code>
-<!-- END OF RUNDIR -->
-
+          <!-- START OF RUNDIR -->
+          <code class="rundir">D:\StayHub\</code>
+          <!-- END OF RUNDIR -->
         </p>
       </footer>
     </div>
