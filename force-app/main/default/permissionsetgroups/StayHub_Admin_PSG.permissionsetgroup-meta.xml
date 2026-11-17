@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Groups administrative and supporting field permissions for StayHub administrators.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>StayHub Admin PSG</label>
+    <permissionSets>StayHub_Admin_Access</permissionSets>
+    <permissionSets>Payment_Field_Access</permissionSets>
+    <permissionSets>Review_Field_Access</permissionSets>
+</PermissionSetGroup>
