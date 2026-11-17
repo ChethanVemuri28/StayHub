@@ -1,0 +1,715 @@
+{
+  "runDir": "D:\\StayHub\\",
+  "violationCounts": {
+    "total": 29,
+    "sev1": 0,
+    "sev2": 0,
+    "sev3": 0,
+    "sev4": 29,
+    "sev5": 0
+  },
+  "versions": {
+    "code-analyzer": "0.53.0",
+    "regex": "0.40.0",
+    "cpd": "0.46.0",
+    "pmd": "0.46.0"
+  },
+  "violations": [
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 106,
+          "startColumn": 10,
+          "endLine": 140,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 143,
+          "startColumn": 10,
+          "endLine": 181,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 184,
+          "startColumn": 10,
+          "endLine": 219,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 226,
+          "startColumn": 10,
+          "endLine": 258,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 261,
+          "startColumn": 10,
+          "endLine": 291,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 294,
+          "startColumn": 10,
+          "endLine": 325,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 328,
+          "startColumn": 10,
+          "endLine": 372,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 375,
+          "startColumn": 10,
+          "endLine": 409,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 416,
+          "startColumn": 10,
+          "endLine": 434,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 437,
+          "startColumn": 10,
+          "endLine": 471,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 474,
+          "startColumn": 10,
+          "endLine": 510,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\BookingRoomPricingServiceTest.cls",
+          "startLine": 517,
+          "startColumn": 10,
+          "endLine": 540,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexDoc",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "Documentation",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataFactory.cls",
+          "startLine": 7,
+          "startColumn": 10,
+          "endLine": 11,
+          "endColumn": 4
+        }
+      ],
+      "message": "Missing ApexDoc comment",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_documentation.html#apexdoc"
+      ]
+    },
+    {
+      "rule": "AvoidDebugStatements",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "Performance",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGenerator.cls",
+          "startLine": 74,
+          "startColumn": 7,
+          "endLine": 77,
+          "endColumn": 8
+        }
+      ],
+      "message": "Avoid debug statements since they impact on performance",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_performance.html#avoiddebugstatements"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 26,
+          "startColumn": 10,
+          "endLine": 31,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 34,
+          "startColumn": 10,
+          "endLine": 39,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 42,
+          "startColumn": 10,
+          "endLine": 44,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 47,
+          "startColumn": 10,
+          "endLine": 57,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 60,
+          "startColumn": 10,
+          "endLine": 70,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 73,
+          "startColumn": 10,
+          "endLine": 83,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 86,
+          "startColumn": 10,
+          "endLine": 149,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 152,
+          "startColumn": 10,
+          "endLine": 163,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 166,
+          "startColumn": 10,
+          "endLine": 180,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 183,
+          "startColumn": 10,
+          "endLine": 197,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 200,
+          "startColumn": 10,
+          "endLine": 215,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 218,
+          "startColumn": 10,
+          "endLine": 233,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 236,
+          "startColumn": 10,
+          "endLine": 261,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 264,
+          "startColumn": 10,
+          "endLine": 279,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    },
+    {
+      "rule": "ApexUnitTestClassShouldHaveRunAs",
+      "engine": "pmd",
+      "severity": 4,
+      "tags": [
+        "Recommended",
+        "BestPractices",
+        "Apex"
+      ],
+      "primaryLocationIndex": 0,
+      "locations": [
+        {
+          "file": "force-app\\main\\default\\classes\\StayHubSampleDataGeneratorTest.cls",
+          "startLine": 282,
+          "startColumn": 10,
+          "endLine": 297,
+          "endColumn": 4
+        }
+      ],
+      "message": "Apex unit test classes should have at least one System.runAs() call",
+      "resources": [
+        "https://docs.pmd-code.org/pmd-doc-7.26.0/pmd_rules_apex_bestpractices.html#apexunittestclassshouldhaverunas"
+      ]
+    }
+  ]
+}

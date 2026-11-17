@@ -17,46 +17,11 @@ public with sharing class StayHubSampleDataFactory {
   public static ReferenceData validateReferenceData() {
     String accountName = System.Label.StayHub_Partner_Account_Name;
     String contactName = System.Label.StayHub_Guest_Contact_Name;
+    validateConfiguredNames(accountName, contactName);
 
-    if (String.isBlank(accountName) || String.isBlank(contactName)) {
-      throw new IllegalArgumentException(
-        'Partner Account and Guest Contact Custom Labels must be configured.'
-      );
-    }
-
-    List<Account> accounts = [
-      SELECT Id, Name
-      FROM Account
-      WHERE Name = :accountName
-      LIMIT 2
-    ];
-
-    if (accounts.size() != 1) {
-      throw new IllegalArgumentException(
-        'Expected exactly one configured Partner Account. Found: ' +
-        accounts.size()
-      );
-    }
-
-    List<Contact> contacts = [
-      SELECT Id, Name, AccountId
-      FROM Contact
-      WHERE Name = :contactName AND AccountId = :accounts[0].Id
-      LIMIT 2
-    ];
-
-    if (contacts.size() != 1) {
-      throw new IllegalArgumentException(
-        'Expected exactly one configured Guest Contact for the Partner Account. Found: ' +
-        contacts.size()
-      );
-    }
-
-    return validateReferenceData(
-      accounts[0].Id,
-      contacts[0].Id,
-      loadRatePlans()
-    );
+    Account partner = findPartnerByName(accountName);
+    Contact guest = findGuestByName(contactName, partner.Id);
+    return buildReferenceData(partner, guest, loadRatePlans());
   }
 
   /**
@@ -88,36 +53,92 @@ public with sharing class StayHubSampleDataFactory {
     Id guestContactId,
     Map<String, Rate_Plan__mdt> suppliedRatePlans
   ) {
+    validateIds(partnerAccountId, guestContactId);
+    validateObjectAccess();
+    Account partner = loadPartnerAccount(partnerAccountId);
+    Contact guest = loadGuestContact(guestContactId);
+    validateGuestAccount(guest, partner);
+    validateRatePlans(suppliedRatePlans);
+    return buildReferenceData(partner, guest, suppliedRatePlans);
+  }
+
+  private static void validateConfiguredNames(
+    String accountName,
+    String contactName
+  ) {
+    if (String.isBlank(accountName) || String.isBlank(contactName)) {
+      throw new IllegalArgumentException(
+        'Partner Account and Guest Contact Custom Labels must be configured.'
+      );
+    }
+  }
+
+  private static Account findPartnerByName(String accountName) {
+    List<Account> accounts = [
+      SELECT Id, Name
+      FROM Account
+      WHERE Name = :accountName
+      LIMIT 2
+    ];
+    if (accounts.size() != 1) {
+      throw new IllegalArgumentException(
+        'Expected exactly one configured Partner Account. Found: ' +
+        accounts.size()
+      );
+    }
+    return accounts[0];
+  }
+
+  private static Contact findGuestByName(String contactName, Id accountId) {
+    List<Contact> contacts = [
+      SELECT Id, Name, AccountId
+      FROM Contact
+      WHERE Name = :contactName AND AccountId = :accountId
+      LIMIT 2
+    ];
+    if (contacts.size() != 1) {
+      throw new IllegalArgumentException(
+        'Expected exactly one configured Guest Contact for the Partner Account. Found: ' +
+        contacts.size()
+      );
+    }
+    return contacts[0];
+  }
+
+  private static void validateIds(Id partnerAccountId, Id guestContactId) {
     if (partnerAccountId == null || guestContactId == null) {
       throw new IllegalArgumentException(
         'Partner Account ID and Guest Contact ID are required.'
       );
     }
+  }
 
+  private static void validateObjectAccess() {
     if (!Schema.sObjectType.Account.isAccessible()) {
       throw new SecurityException('Insufficient access to Account.');
     }
-
     if (!Schema.sObjectType.Contact.isAccessible()) {
       throw new SecurityException('Insufficient access to Contact.');
     }
+  }
 
-    Account partnerAccount = loadPartnerAccount(partnerAccountId);
-    Contact guestContact = loadGuestContact(guestContactId);
-
-    if (guestContact.AccountId != partnerAccount.Id) {
+  private static void validateGuestAccount(Contact guest, Account partner) {
+    if (guest.AccountId != partner.Id) {
       throw new IllegalArgumentException(
         'Guest Contact does not belong to the configured Partner Account.'
       );
     }
+  }
 
-    validateRatePlans(suppliedRatePlans);
-
+  private static ReferenceData buildReferenceData(
+    Account partner,
+    Contact guest,
+    Map<String, Rate_Plan__mdt> plans
+  ) {
     ReferenceData references = new ReferenceData();
-    references.partnerAccount = partnerAccount;
-    references.guestContact = guestContact;
-    references.ratePlans = suppliedRatePlans;
-
+    references.partnerAccount = partner;
+    references.guestContact = guest;
+    references.ratePlans = plans;
     return references;
   }
 
@@ -133,13 +154,11 @@ public with sharing class StayHubSampleDataFactory {
       WHERE Id = :accountId
       LIMIT 1
     ];
-
     if (accounts.isEmpty()) {
       throw new IllegalArgumentException(
         'Configured Partner Account was not found.'
       );
     }
-
     return accounts[0];
   }
 
@@ -155,13 +174,11 @@ public with sharing class StayHubSampleDataFactory {
       WHERE Id = :contactId
       LIMIT 1
     ];
-
     if (contacts.isEmpty()) {
       throw new IllegalArgumentException(
         'Configured Guest Contact was not found.'
       );
     }
-
     return contacts[0];
   }
 
@@ -177,14 +194,12 @@ public with sharing class StayHubSampleDataFactory {
         'Rate Plan configuration is required.'
       );
     }
-
-    Set<String> expectedPlans = new Set<String>{
+    Set<String> requiredPlans = new Set<String>{
       'Low_Season',
       'Shoulder_Season',
       'Peak_Season'
     };
-
-    if (!suppliedRatePlans.keySet().containsAll(expectedPlans)) {
+    if (!suppliedRatePlans.keySet().containsAll(requiredPlans)) {
       throw new IllegalArgumentException(
         'One or more required Rate Plan records are missing.'
       );
@@ -197,7 +212,6 @@ public with sharing class StayHubSampleDataFactory {
    */
   private static Map<String, Rate_Plan__mdt> loadRatePlans() {
     Map<String, Rate_Plan__mdt> plans = new Map<String, Rate_Plan__mdt>();
-
     for (Rate_Plan__mdt plan : [
       SELECT
         DeveloperName,
@@ -213,7 +227,6 @@ public with sharing class StayHubSampleDataFactory {
     ]) {
       plans.put(plan.DeveloperName, plan);
     }
-
     return plans;
   }
 }
