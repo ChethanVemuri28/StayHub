@@ -1,4 +1,3 @@
-
 /**
  * @description Provides configured reference records and Rate Plan metadata
  * for StayHub sample data generation.
@@ -42,8 +41,7 @@ public with sharing class StayHubSampleDataFactory {
     List<Contact> contacts = [
       SELECT Id, Name, AccountId
       FROM Contact
-      WHERE Name = :contactName
-      AND AccountId = :accounts[0].Id
+      WHERE Name = :contactName AND AccountId = :accounts[0].Id
       LIMIT 2
     ];
 
