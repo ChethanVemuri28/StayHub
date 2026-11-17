@@ -7,4 +7,18 @@
         <shortDescription>StayHub Pipeline Test</shortDescription>
         <value>Pipeline Deployment Successful - TEST-001</value>
     </labels>
+    <labels>
+        <fullName>StayHub_Guest_Contact_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>StayHub_Guest_Contact_Name</shortDescription>
+        <value>StayHub Test Guest</value>
+    </labels>
+    <labels>
+        <fullName>StayHub_Partner_Account_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>StayHub_Partner_Account_Name</shortDescription>
+        <value>Sample Account for Entitlements</value>
+    </labels>
 </CustomLabels>

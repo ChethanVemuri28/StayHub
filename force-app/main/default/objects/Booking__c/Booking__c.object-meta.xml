@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <deploymentStatus>Deployed</deploymentStatus>
     <description
@@ -15,5 +15,10 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Bookings</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
+    <externalSharingModel>Private</externalSharingModel>
+    <sharingModel>Private</sharingModel>
+    <sharingReasons>
+        <fullName>StayHub_Partner_Access__c</fullName>
+        <label>StayHub Partner Access</label>
+    </sharingReasons>
 </CustomObject>
