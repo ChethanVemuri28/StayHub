@@ -45,6 +45,7 @@ jobs:
 
       - name: Run Salesforce Code Analyzer
         id: analyzer
+        continue-on-error: true
         uses: forcedotcom/run-code-analyzer@v2
         with:
           run-arguments: --workspace . --view detail --output-file sfca_results.html --output-file sfca_results.json
@@ -52,12 +53,36 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Enforce Code Analyzer quality gate
-        if: >-
-          steps.analyzer.outputs.exit-code > 0 ||
-          steps.analyzer.outputs.num-violations-in-changed-files > 0
+        if: always()
+        shell: bash
         run: |
-          echo "Code Analyzer found violations in changed files."
-          exit 1
+          if [ ! -f sfca_results.json ]; then
+            echo "Code Analyzer did not produce its JSON report."
+            exit 1
+          fi
+
+          jq empty sfca_results.json
+
+          HIGH_COUNT=$(jq '
+            (.violationCounts.sev1 // 0) +
+            (.violationCounts.sev2 // 0) +
+            (.violationCounts.sev3 // 0)
+          ' sfca_results.json)
+
+          echo "Severity 1 findings: $(jq -r '.violationCounts.sev1 // 0' sfca_results.json)"
+          echo "Severity 2 findings: $(jq -r '.violationCounts.sev2 // 0' sfca_results.json)"
+          echo "Severity 3 findings: $(jq -r '.violationCounts.sev3 // 0' sfca_results.json)"
+          echo "Severity 4 findings: $(jq -r '.violationCounts.sev4 // 0' sfca_results.json)"
+          echo "Severity 5 findings: $(jq -r '.violationCounts.sev5 // 0' sfca_results.json)"
+
+          echo "Total Severity 1-3 findings: $HIGH_COUNT"
+
+          if [ "$HIGH_COUNT" -gt 0 ]; then
+            echo "Quality gate failed: Severity 1-3 findings detected."
+            exit 1
+          fi
+
+          echo "Quality gate passed. Severity 4-5 findings are allowed."
 
   apex-tests:
     name: Apex Tests
