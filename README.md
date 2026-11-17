@@ -32,39 +32,39 @@ Our goal is to build a scalable, secure, and user-friendly hotel booking ecosyst
 
 ## ✨ Key Features
 
-| Feature | Description |
-|---|---|
-| 🔍 Hotel Discovery | Search hotels by city, dates, and guest count. |
-| 🎯 Smart Filters | Filter hotels by price, rating, and amenities. |
-| 🏨 Hotel Details | Explore hotel information, room types, and reviews. |
-| 📅 Room Booking | Reserve available rooms with booking validation. |
-| ❌ Cancellation | Manage and cancel existing reservations. |
-| 💰 Dynamic Pricing | Apply seasonal rates, discounts, and taxes. |
+| Feature               | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| 🔍 Hotel Discovery    | Search hotels by city, dates, and guest count.         |
+| 🎯 Smart Filters      | Filter hotels by price, rating, and amenities.         |
+| 🏨 Hotel Details      | Explore hotel information, room types, and reviews.    |
+| 📅 Room Booking       | Reserve available rooms with booking validation.       |
+| ❌ Cancellation       | Manage and cancel existing reservations.               |
+| 💰 Dynamic Pricing    | Apply seasonal rates, discounts, and taxes.            |
 | 💳 Payment Processing | Integrate payment processing and transaction tracking. |
-| ⭐ Reviews & Ratings | Allow guests to submit hotel feedback. |
-| 🏢 Partner Management | Enable partners to manage properties and inventory. |
-| 📩 Lead Capture | Capture and manage potential customer enquiries. |
+| ⭐ Reviews & Ratings  | Allow guests to submit hotel feedback.                 |
+| 🏢 Partner Management | Enable partners to manage properties and inventory.    |
+| 📩 Lead Capture       | Capture and manage potential customer enquiries.       |
 
 ## 👥 User Roles
 
-| Role | Capabilities |
-|---|---|
-| 🧳 Guest | Discover hotels, book rooms, cancel reservations, and submit reviews. |
-| 🏢 Hotel Partner | Manage hotels, room types, rooms, rates, and availability. |
-| 🛡️ Administrator | Oversee platform operations, users, bookings, and configurations. |
+| Role             | Capabilities                                                          |
+| ---------------- | --------------------------------------------------------------------- |
+| 🧳 Guest         | Discover hotels, book rooms, cancel reservations, and submit reviews. |
+| 🏢 Hotel Partner | Manage hotels, room types, rooms, rates, and availability.            |
+| 🛡️ Administrator | Oversee platform operations, users, bookings, and configurations.     |
 
 ## 🛠️ Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| Salesforce Platform | Application foundation |
-| Apex | Backend business logic |
-| Lightning Web Components | User interface |
-| Experience Cloud (LWR) | Customer-facing application |
-| Custom Metadata Types | Rate plans and booking rules |
-| Salesforce DevOps Center | Deployment management |
-| Git & GitHub | Version control |
-| GitHub Actions | Automated validation and CI/CD |
+| Technology               | Purpose                        |
+| ------------------------ | ------------------------------ |
+| Salesforce Platform      | Application foundation         |
+| Apex                     | Backend business logic         |
+| Lightning Web Components | User interface                 |
+| Experience Cloud (LWR)   | Customer-facing application    |
+| Custom Metadata Types    | Rate plans and booking rules   |
+| Salesforce DevOps Center | Deployment management          |
+| Git & GitHub             | Version control                |
+| GitHub Actions           | Automated validation and CI/CD |
 
 ## 🏗️ Application Architecture
 
@@ -105,14 +105,14 @@ flowchart TB
 
 The initial data model consists of six primary custom objects:
 
-| Object | Purpose |
-|---|---|
-| `Hotel__c` | Stores hotel information and details. |
+| Object         | Purpose                                 |
+| -------------- | --------------------------------------- |
+| `Hotel__c`     | Stores hotel information and details.   |
 | `Room_Type__c` | Defines room categories and capacities. |
-| `Room__c` | Maintains individual room information. |
-| `Booking__c` | Manages guest reservations. |
-| `Payment__c` | Tracks payment transactions. |
-| `Review__c` | Stores guest reviews and ratings. |
+| `Room__c`      | Maintains individual room information.  |
+| `Booking__c`   | Manages guest reservations.             |
+| `Payment__c`   | Tracks payment transactions.            |
+| `Review__c`    | Stores guest reviews and ratings.       |
 
 **Custom Metadata Types**
 
@@ -154,25 +154,25 @@ StayHub/
 
 ## 🚀 Development Roadmap
 
-| Timeline | Milestone | Focus |
-|---|---|---|
-| Week 1 | 📝 Planning | Requirements, architecture, wireframes, and DevOps setup |
-| Week 2 | 🗄️ Foundation | Salesforce objects, relationships, metadata, and security |
-| Week 3 | ⚙️ Backend | Apex services, booking logic, pricing, and integrations |
-| Week 4 | 🎨 Frontend | Experience Cloud, LWC components, and checkout |
-| Week 5 | 🚢 Delivery | UAT, regression testing, deployment, and handover |
+| Timeline | Milestone     | Focus                                                     |
+| -------- | ------------- | --------------------------------------------------------- |
+| Week 1   | 📝 Planning   | Requirements, architecture, wireframes, and DevOps setup  |
+| Week 2   | 🗄️ Foundation | Salesforce objects, relationships, metadata, and security |
+| Week 3   | ⚙️ Backend    | Apex services, booking logic, pricing, and integrations   |
+| Week 4   | 🎨 Frontend   | Experience Cloud, LWC components, and checkout            |
+| Week 5   | 🚢 Delivery   | UAT, regression testing, deployment, and handover         |
 
 ## 🧪 Quality Standards
 
-| Metric | Target |
-|---|---|
-| Apex Test Coverage | ≥ 90% |
-| Critical Code Analyzer Findings | 0 |
-| Hotel Search Response Time | < 2 seconds on 50,000 records |
-| Booking Conflict Validation | Required |
-| Apex Bulkification | Required |
-| Security and Access Control | Required |
-| Deployment Validation | Required |
+| Metric                          | Target                        |
+| ------------------------------- | ----------------------------- |
+| Apex Test Coverage              | ≥ 90%                         |
+| Critical Code Analyzer Findings | 0                             |
+| Hotel Search Response Time      | < 2 seconds on 50,000 records |
+| Booking Conflict Validation     | Required                      |
+| Apex Bulkification              | Required                      |
+| Security and Access Control     | Required                      |
+| Deployment Validation           | Required                      |
 
 ## 🔄 Development & Deployment
 

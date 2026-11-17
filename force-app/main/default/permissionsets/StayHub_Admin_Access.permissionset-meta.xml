@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking_Room__c.Nights_for_Pricing__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Booking__c.Total_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Booking_Room__c.Room_Total__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking__c.Inquiry_Expires_At__c</field>
+        <readable>true</readable>
+    </fieldPermissions>    <fieldPermissions>
+        <editable>true</editable>
+        <field>Booking__c.Special_Requests__c</field>
+        <readable>true</readable>
+    </fieldPermissions>    <hasActivationRequired>false</hasActivationRequired>
+    <label>StayHub Admin Access</label>
+</PermissionSet>

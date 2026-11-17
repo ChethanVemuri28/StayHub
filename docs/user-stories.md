@@ -18,14 +18,14 @@
 
 ## 📌 Document Overview
 
-| Property | Details |
-|---|---|
-| Project | StayHub |
-| Document | User Stories and Acceptance Criteria |
-| Version | 1.0 |
-| Status | Draft |
-| Total User Stories | 15 |
-| User Groups | Guest, Hotel Partner, Administrator |
+| Property           | Details                              |
+| ------------------ | ------------------------------------ |
+| Project            | StayHub                              |
+| Document           | User Stories and Acceptance Criteria |
+| Version            | 1.0                                  |
+| Status             | Draft                                |
+| Total User Stories | 15                                   |
+| User Groups        | Guest, Hotel Partner, Administrator  |
 
 ## 🧭 Navigation
 
@@ -314,28 +314,28 @@ As a platform administrator, I want to monitor hotel bookings across StayHub so 
 
 # 📊 4. Priority Summary
 
-| Priority | Meaning | Stories |
-|---|---|---:|
-| Critical | Essential for core operations | 3 |
-| High | Important for primary user journeys | 10 |
-| Medium | Supporting functionality | 2 |
+| Priority | Meaning                             | Stories |
+| -------- | ----------------------------------- | ------: |
+| Critical | Essential for core operations       |       3 |
+| High     | Important for primary user journeys |      10 |
+| Medium   | Supporting functionality            |       2 |
 
 ### Stories by User Group
 
-| User Group | Story IDs | Count |
-|---|---|---:|
-| Guest | US-001 to US-009 | 9 |
-| Hotel Partner | US-010 to US-013 | 4 |
-| Administrator | US-014 to US-015 | 2 |
-| **Total** | **US-001 to US-015** | **15** |
+| User Group    | Story IDs            |  Count |
+| ------------- | -------------------- | -----: |
+| Guest         | US-001 to US-009     |      9 |
+| Hotel Partner | US-010 to US-013     |      4 |
+| Administrator | US-014 to US-015     |      2 |
+| **Total**     | **US-001 to US-015** | **15** |
 
 ### Planned Development Distribution
 
-| Week | Planned Focus | Stories |
-|---|---|---|
-| Week 2 | Lead capture, hotel profile, room types, access | US-009, US-010, US-011, US-014 |
-| Week 3 | Search, filters, details, availability, booking, cancellation, inventory | US-001 to US-007, US-012 |
-| Week 4 | Reviews, reservations, administration | US-008, US-013, US-015 |
+| Week   | Planned Focus                                                            | Stories                        |
+| ------ | ------------------------------------------------------------------------ | ------------------------------ |
+| Week 2 | Lead capture, hotel profile, room types, access                          | US-009, US-010, US-011, US-014 |
+| Week 3 | Search, filters, details, availability, booking, cancellation, inventory | US-001 to US-007, US-012       |
+| Week 4 | Reviews, reservations, administration                                    | US-008, US-013, US-015         |
 
 ---
 
@@ -359,14 +359,14 @@ A user story is considered complete only when all applicable conditions are sati
 
 Each user story will be represented by a corresponding DevOps Center work item.
 
-| Field | Expected Value |
-|---|---|
-| Work Item Title | User Story ID and short title |
-| Description | Complete user story |
-| Acceptance Criteria | Testable conditions from this document |
-| Priority | Critical / High / Medium |
-| Planned Week | Assigned development week |
-| Status | New / In Progress / Ready for Review / Done |
+| Field               | Expected Value                              |
+| ------------------- | ------------------------------------------- |
+| Work Item Title     | User Story ID and short title               |
+| Description         | Complete user story                         |
+| Acceptance Criteria | Testable conditions from this document      |
+| Priority            | Critical / High / Medium                    |
+| Planned Week        | Assigned development week                   |
+| Status              | New / In Progress / Ready for Review / Done |
 
 ---
 
@@ -374,6 +374,6 @@ Each user story will be represented by a corresponding DevOps Center work item.
 
 **StayHub — Your Stay. Your Way.**
 
-*Building better hotel experiences, one user story at a time.*
+_Building better hotel experiences, one user story at a time._
 
 </div>

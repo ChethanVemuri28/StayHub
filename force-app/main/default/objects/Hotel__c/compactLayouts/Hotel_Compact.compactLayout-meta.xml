@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Hotel_Compact</fullName>
+  <fields>Hotel_Code__c</fields>
+  <fields>Name</fields>
+  <fields>City__c</fields>
+  <fields>Star_Rating__c</fields>
+  <fields>Status__c</fields>
+  <label>Hotel Compact Layout</label>
+</CompactLayout>
