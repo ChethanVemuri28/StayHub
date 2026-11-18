@@ -10,33 +10,32 @@
 
 <h2>Defining what success looks like, how it is measured, and how it is reviewed.</h2>
 
-
 </div>
 
 ---
 
 ## 📌 Document Overview
 
-| Property | Details |
-|---|---|
-| Project | StayHub |
-| Document | Project Success Criteria |
-| Version | 1.0 |
-| Owner | Developer |
-| Reviewer | To be assigned |
-| Status | Draft – Pending Review |
-| Development Timeline | 5 Weeks |
+| Property             | Details                  |
+| -------------------- | ------------------------ |
+| Project              | StayHub                  |
+| Document             | Project Success Criteria |
+| Version              | 1.0                      |
+| Owner                | Developer                |
+| Reviewer             | To be assigned           |
+| Status               | Draft – Pending Review   |
+| Development Timeline | 5 Weeks                  |
 
 ## 🧭 Quick Navigation
 
-| Section | Description |
-|---|---|
-| [🎯 Project Deliverables](#-1-project-deliverables) | What we must deliver |
-| [📊 Acceptance Criteria](#-2-passfail-acceptance-criteria) | How success is measured |
-| [📅 Milestones](#-3-review-dates-and-milestones) | Project timeline and reviews |
-| [🤝 Support](#-4-support-provided) | Required resources and dependencies |
-| [🚨 Escalation](#-5-deadline-change-and-escalation-process) | Handling blockers and delays |
-| [✅ Sign-off](#-acceptance-and-sign-off) | Final approval |
+| Section                                                     | Description                         |
+| ----------------------------------------------------------- | ----------------------------------- |
+| [🎯 Project Deliverables](#-1-project-deliverables)         | What we must deliver                |
+| [📊 Acceptance Criteria](#-2-passfail-acceptance-criteria)  | How success is measured             |
+| [📅 Milestones](#-3-review-dates-and-milestones)            | Project timeline and reviews        |
+| [🤝 Support](#-4-support-provided)                          | Required resources and dependencies |
+| [🚨 Escalation](#-5-deadline-change-and-escalation-process) | Handling blockers and delays        |
+| [✅ Sign-off](#-acceptance-and-sign-off)                    | Final approval                      |
 
 ---
 
@@ -81,18 +80,18 @@ StayHub will deliver a Salesforce-based hotel booking application supporting thr
 
 ### 📦 Technical Deliverables
 
-| # | Deliverable | Expected Outcome | Status |
-|---:|---|---|---|
-| 1 | Requirements Documentation | User stories and acceptance criteria | ⬜ Pending |
-| 2 | Solution Architecture | ERD, security model and ADRs | ⬜ Pending |
-| 3 | User Interface | Lightning Web Components | ⬜ Pending |
-| 4 | Hotel Management | Hotel and room inventory management | ⬜ Pending |
-| 5 | Booking Management | Booking creation and cancellation | ⬜ Pending |
-| 6 | Automation | Apex and Salesforce Flows | ⬜ Pending |
-| 7 | Security | Sharing, CRUD and FLS enforcement | ⬜ Pending |
-| 8 | Testing | Apex and functional test coverage | ⬜ Pending |
-| 9 | DevOps | GitHub integration and CI/CD | ⬜ Pending |
-| 10 | Documentation | Technical and deployment documentation | ⬜ Pending |
+|   # | Deliverable                | Expected Outcome                       | Status     |
+| --: | -------------------------- | -------------------------------------- | ---------- |
+|   1 | Requirements Documentation | User stories and acceptance criteria   | ⬜ Pending |
+|   2 | Solution Architecture      | ERD, security model and ADRs           | ⬜ Pending |
+|   3 | User Interface             | Lightning Web Components               | ⬜ Pending |
+|   4 | Hotel Management           | Hotel and room inventory management    | ⬜ Pending |
+|   5 | Booking Management         | Booking creation and cancellation      | ⬜ Pending |
+|   6 | Automation                 | Apex and Salesforce Flows              | ⬜ Pending |
+|   7 | Security                   | Sharing, CRUD and FLS enforcement      | ⬜ Pending |
+|   8 | Testing                    | Apex and functional test coverage      | ⬜ Pending |
+|   9 | DevOps                     | GitHub integration and CI/CD           | ⬜ Pending |
+|  10 | Documentation              | Technical and deployment documentation | ⬜ Pending |
 
 ---
 
@@ -103,14 +102,14 @@ The following metrics will be used to evaluate project quality.
 <details open>
 <summary><strong>⚙️ Technical Quality Targets</strong></summary>
 
-| Metric | Acceptance Target |
-|---|---:|
-| Apex test coverage | ≥ 90% |
-| Critical Code Analyzer findings | 0 |
-| SOQL queries inside loops | 0 |
-| Hotel search response time (50,000 records) | Under 2 seconds |
-| Unauthorized access to restricted records | 0 successful unauthorized accesses |
-| Deployment validation | Successful |
+| Metric                                      |                  Acceptance Target |
+| ------------------------------------------- | ---------------------------------: |
+| Apex test coverage                          |                              ≥ 90% |
+| Critical Code Analyzer findings             |                                  0 |
+| SOQL queries inside loops                   |                                  0 |
+| Hotel search response time (50,000 records) |                    Under 2 seconds |
+| Unauthorized access to restricted records   | 0 successful unauthorized accesses |
+| Deployment validation                       |                         Successful |
 
 </details>
 
@@ -172,13 +171,13 @@ The following metrics will be used to evaluate project quality.
 
 The project follows a five-week delivery plan.
 
-| Milestone | Focus Area | Review Status |
-|---|---|---|
-| Week 1 | Requirements, architecture and DevOps | ⬜ Pending |
-| Week 2 | Data model, security and foundational Apex | ⬜ Pending |
-| Week 3 | Search, availability and booking | ⬜ Pending |
-| Week 4 | Administration, partner management and dashboards | ⬜ Pending |
-| Week 5 | Testing, optimization and deployment | ⬜ Pending |
+| Milestone | Focus Area                                        | Review Status |
+| --------- | ------------------------------------------------- | ------------- |
+| Week 1    | Requirements, architecture and DevOps             | ⬜ Pending    |
+| Week 2    | Data model, security and foundational Apex        | ⬜ Pending    |
+| Week 3    | Search, availability and booking                  | ⬜ Pending    |
+| Week 4    | Administration, partner management and dashboards | ⬜ Pending    |
+| Week 5    | Testing, optimization and deployment              | ⬜ Pending    |
 
 ### 📍 Milestone Review Checklist
 
@@ -252,23 +251,23 @@ The project follows a five-week delivery plan.
 
 The following resources and support are expected to facilitate successful project delivery.
 
-| Support Area | Expected Support |
-|---|---|
-| Salesforce Environment | Developer Org and required environment access |
-| Development Tools | VS Code, Salesforce CLI and GitHub |
-| Requirements | Functional and technical clarification |
-| Documentation | Access to project references |
-| Reviews | Timely feedback on milestone deliverables |
-| DevOps | Assistance with environment and deployment issues |
+| Support Area           | Expected Support                                  |
+| ---------------------- | ------------------------------------------------- |
+| Salesforce Environment | Developer Org and required environment access     |
+| Development Tools      | VS Code, Salesforce CLI and GitHub                |
+| Requirements           | Functional and technical clarification            |
+| Documentation          | Access to project references                      |
+| Reviews                | Timely feedback on milestone deliverables         |
+| DevOps                 | Assistance with environment and deployment issues |
 
 ### Dependency Tracking
 
-| Dependency | Impact | Status |
-|---|---|---|
-| Salesforce environment access | Development and deployment | ⬜ To verify |
-| GitHub repository access | Source control | ⬜ To verify |
-| Functional clarification | Requirements accuracy | ⬜ To verify |
-| Reviewer availability | Milestone approvals | ⬜ To confirm |
+| Dependency                    | Impact                     | Status        |
+| ----------------------------- | -------------------------- | ------------- |
+| Salesforce environment access | Development and deployment | ⬜ To verify  |
+| GitHub repository access      | Source control             | ⬜ To verify  |
+| Functional clarification      | Requirements accuracy      | ⬜ To verify  |
+| Reviewer availability         | Milestone approvals        | ⬜ To confirm |
 
 ---
 
@@ -298,15 +297,15 @@ flowchart TD
 
 ### Required Change Information
 
-| Field | Description |
-|---|---|
-| Deliverable | Affected project task |
-| Original Deadline | Previously agreed date |
-| Reason | Blocker or dependency |
-| Impact | Schedule or scope impact |
-| Mitigation | Proposed corrective action |
-| Revised Deadline | Proposed completion date |
-| Approval | Reviewer confirmation |
+| Field             | Description                |
+| ----------------- | -------------------------- |
+| Deliverable       | Affected project task      |
+| Original Deadline | Previously agreed date     |
+| Reason            | Blocker or dependency      |
+| Impact            | Schedule or scope impact   |
+| Mitigation        | Proposed corrective action |
+| Revised Deadline  | Proposed completion date   |
+| Approval          | Reviewer confirmation      |
 
 ---
 
@@ -314,10 +313,10 @@ flowchart TD
 
 This document establishes the initial project success criteria and evaluation framework for StayHub.
 
-| Role | Name | Approval Date | Status |
-|---|---|---|---|
-| Developer | To be assigned | Pending | ⬜ Pending |
-| Project Reviewer | To be assigned | Pending | ⬜ Pending |
+| Role             | Name           | Approval Date | Status     |
+| ---------------- | -------------- | ------------- | ---------- |
+| Developer        | To be assigned | Pending       | ⬜ Pending |
+| Project Reviewer | To be assigned | Pending       | ⬜ Pending |
 
 ---
 
@@ -325,6 +324,6 @@ This document establishes the initial project success criteria and evaluation fr
 
 **StayHub — Your Stay. Your Way.**
 
-*Clear requirements. Measurable outcomes. Quality delivery.*
+_Clear requirements. Measurable outcomes. Quality delivery._
 
 </div>

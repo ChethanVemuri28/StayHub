@@ -9,6 +9,7 @@
 StayHub requires a customer-facing booking experience and a hotel-partner portal.
 
 The platform must support:
+
 - Public hotel browsing and room searches.
 - Guest registration and booking management.
 - Hotel receptionist access to hotel-specific bookings.
@@ -27,11 +28,13 @@ The architecture must select a framework that supports StayHub's requirements wh
 Build the Experience Cloud site using an Aura-based template.
 
 Advantages:
+
 - Supports Aura components and Lightning Web Components.
 - Provides several established out-of-the-box pages and components.
 - Offers more built-in features in certain Experience Cloud scenarios.
 
 Disadvantages:
+
 - Older component framework.
 - Less aligned with a new LWC-first architecture.
 - Some features and components are specific to Aura.
@@ -41,6 +44,7 @@ Disadvantages:
 Build the Experience Cloud site using an LWR template.
 
 Advantages:
+
 - Designed around Lightning Web Components.
 - Lightweight architecture.
 - Designed for performance and scalability.
@@ -48,6 +52,7 @@ Advantages:
 - Suitable for customized customer-facing experiences.
 
 Disadvantages:
+
 - Some standard Aura template components and pages are unavailable.
 - Requires more custom development for certain features.
 - Some Lightning component library features have different availability.
@@ -85,16 +90,15 @@ Aura will remain an alternative if a required Experience Cloud feature or integr
 
 ### Risks and Mitigations
 
-| Risk | Mitigation |
-|---|---|
+| Risk                                    | Mitigation                                       |
+| --------------------------------------- | ------------------------------------------------ |
 | Required standard component unavailable | Identify equivalent LWC or custom implementation |
-| External user experience limitations | Validate guest and partner authentication early |
-| Performance issues | Conduct site performance testing |
-| Missing template features | Review LWR limitations before development |
+| External user experience limitations    | Validate guest and partner authentication early  |
+| Performance issues                      | Conduct site performance testing                 |
+| Missing template features               | Review LWR limitations before development        |
 
 ## 6. References
 
 - Salesforce LWR Templates: https://developer.salesforce.com/docs/platform/exp-cloud-lwr/guide/template-overview.html
 - LWR Template Limitations: https://developer.salesforce.com/docs/platform/exp-cloud-lwr/guide/template-limitations.html
 - Experience Cloud Performance: https://help.salesforce.com/s/articleView?id=experience.exp_cloud_perf_considerations.htm
-

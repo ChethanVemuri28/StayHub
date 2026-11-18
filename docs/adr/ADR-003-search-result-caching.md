@@ -9,6 +9,7 @@
 StayHub allows public visitors and registered guests to search for hotels and available rooms.
 
 Search operations may involve:
+
 - Retrieving active hotels.
 - Retrieving room types and amenities.
 - Filtering by location.
@@ -27,11 +28,13 @@ The system needs a caching strategy that improves search performance without ret
 Execute database queries for every search request.
 
 Advantages:
+
 - Always retrieves current database information.
 - Simple implementation.
 - No cache invalidation requirements.
 
 Disadvantages:
+
 - Repeated database queries.
 - Increased server processing.
 - Potential performance degradation with higher traffic.
@@ -41,12 +44,14 @@ Disadvantages:
 Use Lightning Data Service, client-side caching and cacheable Apex methods where appropriate.
 
 Advantages:
+
 - Reduces repeated server requests.
 - Improves responsiveness.
 - Suitable for data that does not change frequently.
 - Requires less server-side cache management.
 
 Disadvantages:
+
 - Cached data can become outdated.
 - Cache lifetime and refresh behavior must be considered.
 - Not suitable as the sole mechanism for validating room availability.
@@ -58,20 +63,24 @@ Use Salesforce Platform Cache to store frequently accessed search results.
 Two caching scopes are available:
 
 **Org Cache**
+
 - Shared across users and sessions.
 - Suitable for commonly reused public catalogue data.
 
 **Session Cache**
+
 - Limited to an individual user session.
 - Suitable for session-specific search information.
 
 Advantages:
+
 - Reduces repeated SOQL queries.
 - Supports shared or session-specific caching.
 - Provides configurable expiration.
 - Can improve performance for frequently accessed data.
 
 Disadvantages:
+
 - Requires Platform Cache configuration and available capacity.
 - Cached entries can expire or be evicted.
 - Requires cache-key management and invalidation.
@@ -146,27 +155,27 @@ Cache misses must fall back to the database.
 
 ### Risks and Mitigations
 
-| Risk | Mitigation |
-|---|---|
-| Stale hotel information | Configure suitable TTL and invalidate affected entries |
-| Stale room availability | Revalidate availability before booking |
-| Incorrect cache key | Include all relevant normalized search parameters |
-| Cache eviction | Implement database fallback |
+| Risk                           | Mitigation                                                        |
+| ------------------------------ | ----------------------------------------------------------------- |
+| Stale hotel information        | Configure suitable TTL and invalidate affected entries            |
+| Stale room availability        | Revalidate availability before booking                            |
+| Incorrect cache key            | Include all relevant normalized search parameters                 |
+| Cache eviction                 | Implement database fallback                                       |
 | Sensitive information exposure | Cache only approved public catalogue data in shared public caches |
-| Insufficient cache capacity | Monitor usage and evaluate cache allocation |
+| Insufficient cache capacity    | Monitor usage and evaluate cache allocation                       |
 
 ## 6. Initial Caching Policy
 
 The following are proposed starting values and must be tuned through performance testing.
 
-| Data Type | Cache Strategy | Initial TTL |
-|---|---|---|
-| Public hotel catalogue | Org Cache / public HTTP caching | 15 minutes |
-| Room types and amenities | Org Cache / client-side caching | 15 minutes |
-| Public hotel search results | Org Cache | 2 minutes |
-| Room availability search results | No shared cache initially | No cache |
-| Booking records | No shared cache | No cache |
-| Payment records | No shared cache | No cache |
+| Data Type                        | Cache Strategy                  | Initial TTL |
+| -------------------------------- | ------------------------------- | ----------- |
+| Public hotel catalogue           | Org Cache / public HTTP caching | 15 minutes  |
+| Room types and amenities         | Org Cache / client-side caching | 15 minutes  |
+| Public hotel search results      | Org Cache                       | 2 minutes   |
+| Room availability search results | No shared cache initially       | No cache    |
+| Booking records                  | No shared cache                 | No cache    |
+| Payment records                  | No shared cache                 | No cache    |
 
 The initial TTL values are design choices, not Salesforce platform defaults.
 
@@ -176,4 +185,3 @@ The initial TTL values are design choices, not Salesforce platform defaults.
 - Platform Cache Best Practices: https://trailhead.salesforce.com/content/learn/modules/platform_cache/platform_cache_use
 - Platform Cache Considerations: https://developer.salesforce.com/docs/platform/apex-dev/references/apex-dev/apex-platform-cache-limitations.html
 - LWR Caching Policy: https://developer.salesforce.com/docs/platform/exp-cloud-lwr/guide/template-differences-caching.html
-

@@ -27,6 +27,7 @@ The system needs a reliable approach to implement and maintain these rules.
 Implement booking rules using Screen Flows and Record-Triggered Flows.
 
 Advantages:
+
 - Declarative development.
 - Easier for administrators to maintain.
 - Visual representation of business processes.
@@ -34,6 +35,7 @@ Advantages:
 - Faster implementation for straightforward automation.
 
 Disadvantages:
+
 - Complex room availability checks can become difficult to maintain.
 - Complex processing across multiple rooms requires additional flow elements.
 - Less control over transaction handling.
@@ -44,6 +46,7 @@ Disadvantages:
 Implement booking rules using Apex classes, triggers and service methods.
 
 Advantages:
+
 - Supports complex business logic.
 - Provides Map and Set data structures.
 - Supports bulk processing.
@@ -52,6 +55,7 @@ Advantages:
 - Easier to centralize reusable booking validation logic.
 
 Disadvantages:
+
 - Requires development expertise.
 - Requires Apex unit tests.
 - Requires additional coding and deployment effort.
@@ -62,12 +66,14 @@ Disadvantages:
 Use Apex for core booking rules and Flow for supporting automation.
 
 Advantages:
+
 - Complex logic remains in reusable Apex services.
 - Declarative automation remains available for simpler workflows.
 - Balances developer control and administrator maintainability.
 - Supports separation of business logic and process orchestration.
 
 Disadvantages:
+
 - Requires clear boundaries between Flow and Apex.
 - Requires coordination when both technologies participate in the same transaction.
 - Additional architectural discipline is necessary.
@@ -123,16 +129,15 @@ A single clear automation entry point will be maintained for each object to avoi
 
 ### Risks and Mitigations
 
-| Risk | Mitigation |
-|---|---|
+| Risk                        | Mitigation                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------- |
 | Concurrent booking requests | Revalidate availability during booking and implement appropriate concurrency controls |
-| Governor-limit exceptions | Bulkify SOQL and DML operations |
-| Duplicate business logic | Centralize booking rules in Apex services |
-| Flow and Apex recursion | Maintain one entry point and document automation order |
-| Insufficient test coverage | Create positive, negative and bulk test scenarios |
+| Governor-limit exceptions   | Bulkify SOQL and DML operations                                                       |
+| Duplicate business logic    | Centralize booking rules in Apex services                                             |
+| Flow and Apex recursion     | Maintain one entry point and document automation order                                |
+| Insufficient test coverage  | Create positive, negative and bulk test scenarios                                     |
 
 ## 6. References
 
 - Salesforce Record-Triggered Automation Decision Guide: https://architect.salesforce.com/docs/architect/decision-guides/guide/record-triggered.html
 - Salesforce Apex Developer Guide: https://developer.salesforce.com/docs/platform/apex/guide
-

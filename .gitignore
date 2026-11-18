@@ -46,3 +46,10 @@ $RECYCLE.BIN/
 **/__pycache__/
 **/.venv/
 **/venv/
+
+github-ci-auth.txt
+
+_backups/
+temp/
+
+code-analyzer-results.html
