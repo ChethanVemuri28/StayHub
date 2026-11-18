@@ -208,3 +208,5 @@ private class BookingInquiryExpiryTest {
     }
   }
 }
+
+// Sample Test
