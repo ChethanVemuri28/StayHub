@@ -42,8 +42,7 @@ public with sharing class StayHubSampleDataGenerator implements Database.Batchab
     }
     return count * 37;
   }
-  //  I am testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not. I will also be testing the deployment of the code to see if it works or not.
-
+  // I am testing deployment
   /**
    * @description Creates one batch item for each requested hotel.
    * @param bc Batch execution context.
