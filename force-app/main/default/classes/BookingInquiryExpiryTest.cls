@@ -208,5 +208,3 @@ private class BookingInquiryExpiryTest {
     }
   }
 }
-
-// Sample Test to verify deployment
