@@ -42,7 +42,7 @@ public with sharing class StayHubSampleDataGenerator implements Database.Batchab
     }
     return count * 37;
   }
-  // I am testing deployment
+
   /**
    * @description Creates one batch item for each requested hotel.
    * @param bc Batch execution context.
